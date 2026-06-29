@@ -177,6 +177,7 @@
   textarea { resize: vertical; min-height: 90px; }
   input[type="file"] { font-size: 13px; }
   .hint { font-size: 11px; color: var(--muted); margin-top: 4px; }
+  code { background: #eee; padding: 1px 5px; border-radius: 3px; font-size: 12px; }
   .field-error { font-size: 12px; color: #c62828; margin-top: 4px; display: none; }
 
   button.primary {
@@ -322,12 +323,12 @@
   <button data-target="minutes">📄 Minutes of Meeting</button>
   <button data-target="houserules">📜 House Rules</button>
   <button data-target="booking">🏊 Facilities Booking</button>
-  <button data-target="visitorpass">🪪 Visitor Pass</button>
+  <button data-target="visitorpass" style="display:none;">🪪 Visitor Pass</button>
   <button data-target="announcements">📢 Announcements</button>
   <button data-target="forms">📋 Forms &amp; Documents</button>
   <button data-target="contact">📞 Contact</button>
   <button data-target="orgchart">🧑‍💼 Organization Chart</button>
-  <button data-target="security">🛂 Security</button>
+  <button data-target="security" style="display:none;">🛂 Security</button>
   <button data-target="admin">🔑 Admin</button>
 </nav>
 
@@ -341,7 +342,7 @@
       <button class="tile" data-target="minutes"><span class="icon">📅</span>Mesyuarat Akan Datang<br><span class="en">Upcoming Meetings</span></button>
       <button class="tile" data-target="houserules"><span class="icon">📜</span>Peraturan Rumah<br><span class="en">House Rules</span></button>
       <button class="tile" data-target="booking"><span class="icon">🏊</span>Acara &amp; Tempahan<br><span class="en">Events &amp; Bookings</span></button>
-      <button class="tile" data-target="visitorpass"><span class="icon">🪪</span>Pas Pelawat<br><span class="en">Visitor Pass</span></button>
+      <button class="tile" data-target="visitorpass" style="display:none;"><span class="icon">🪪</span>Pas Pelawat<br><span class="en">Visitor Pass</span></button>
       <button class="tile" data-target="orgchart"><span class="icon">🧑‍💼</span>Carta Organisasi<br><span class="en">Organization Chart</span></button>
     </div>
     <div class="card">
@@ -568,13 +569,31 @@
 
       <!-- Bylaw Updates -->
       <div id="hr-bylaws" class="hr-sub" style="display:none;">
-        <h3 style="font-size:15px;color:var(--navy);margin:14px 0 6px;">Pindaan Undang-Undang Kecil Tambahan <span class="en">(AGM 27 September 2025)</span></h3>
-        <p style="font-size:14px;line-height:1.6;">Diluluskan sebulat suara pada Mesyuarat Agung MC pada 27 September 2025:</p>
+
+        <h3 style="font-size:15px;color:var(--navy);margin:14px 0 6px;">AGM 1 — 24 Jun 2023</h3>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:6px;">Diluluskan sebulat suara pada Mesyuarat Agung Pertama Perbadanan Pengurusan Kondominium Delima Emas.</p>
         <ul class="rules-list">
-          <li><strong>1) Invisible Grille di Balkoni</strong> — Dibenarkan, dengan spesifikasi: stainless steel cable Teflon-coated 2.0mm (SS316), jarak antara kabel 2.0 inci, dipasang penuh, lurus, di luar railing.</li>
-          <li><strong>2) Bidai Kayu (Bamboo Roller Blinds)</strong> — Dibenarkan, jenis kayu berwarna coklat gelap sahaja.</li>
+          <li><strong>Penyewaan kepada Warga Asing</strong> — Warga asing samada pekerja professional atau bukan professional, <strong>tidak dibenarkan menyewa</strong> di Kondominium Delima Emas. <span class="en">(Foreign nationals — whether professional workers or otherwise — are not permitted to rent units here.)</span></li>
+          <li><strong>Had Penghuni</strong> — Unit yang disewa hendaklah tidak melebihi <strong>6 orang</strong> sahaja. <span class="en">(Maximum 6 occupants per unit.)</span></li>
         </ul>
-        <p style="font-size:12px;color:var(--muted);margin-top:8px;">English: 1) Invisible grilles on balconies are permitted — stainless steel cable, Teflon-coated, 2.0mm (SS316), 2.0 inch interval gap, fully installed, straight, outside the railing. 2) Bamboo roller blinds are permitted — dark brown wood colour only.</p>
+
+        <h3 style="font-size:15px;color:var(--navy);margin:18px 0 6px;">AGM 2 — 20 Julai 2024</h3>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:6px;">Diluluskan pada Mesyuarat Agung Ke Dua Perbadanan Pengurusan Kondominium Delima Emas.</p>
+        <ul class="rules-list">
+          <li><strong>Gymnasium</strong> — Denda <strong>RM100 atau 3 bulan tidak dibenarkan menggunakan bilik gym</strong> bagi pengguna yang tidak mematuhi peraturan gym (tertera di pintu masuk), vandalism dan sebagainya. <span class="en">(Fine RM100 or 3-month gym ban for violating gym rules, vandalism, etc.)</span></li>
+          <li><strong>Parking Lot</strong> — Denda <strong>RM50</strong> sekiranya kenderaan anda dikunci kerana meletak kenderaan di lot parking kepunyaan unit lain. <span class="en">(RM50 fine for parking in another unit's allocated lot.)</span></li>
+          <li><strong>Parking Lot (Motosikal/Kereta)</strong> — Denda <strong>RM50</strong> sekiranya kenderaan anda dikunci kerana meletakkan motosikal/kereta di tempat yang bukan di kawasan yang telah ditetapkan dan disediakan oleh pihak Pengurusan. <span class="en">(RM50 fine for parking motorcycle/car outside designated areas.)</span></li>
+          <li><strong>Parking Visitor (Bermalam)</strong> — Kemudahan tempat kereta bagi pelawat bermalam hanya dibenarkan selama <strong>3 hari sahaja</strong>. Bagi hari seterusnya akan dikenakan bayaran <strong>RM10 semalam</strong>. <span class="en">(Overnight visitor parking limited to 3 nights; RM10/night thereafter.)</span></li>
+          <li><strong>Bilik Sampah</strong> — Denda <strong>RM100</strong> bagi unit yang membuang sampah sesuka hati tanpa mematuhi notis yang ditampal pada bilik sampah. <span class="en">(RM100 fine for improper waste disposal ignoring posted notices.)</span></li>
+          <li><strong>Lift</strong> — Denda <strong>RM100</strong> bagi unit yang memberhentikan lift secara manual tanpa menggunakan kad akses, melakukan vandalism dengan sengaja. Sekiranya berlaku kerosakan lift, pengguna yang terlibat akan menanggung kos kerosakan tersebut. <span class="en">(RM100 fine for manually stopping lift without access card or vandalism; user bears repair costs if lift is damaged.)</span></li>
+        </ul>
+
+        <h3 style="font-size:15px;color:var(--navy);margin:18px 0 6px;">AGM — 27 September 2025</h3>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:6px;">Diluluskan sebulat suara pada Mesyuarat Agung MC 27 September 2025.</p>
+        <ul class="rules-list">
+          <li><strong>Invisible Grille di Balkoni</strong> — Dibenarkan, dengan spesifikasi: stainless steel cable Teflon-coated 2.0mm (SS316), jarak antara kabel 2.0 inci, dipasang penuh, lurus, di luar railing. <span class="en">(Balcony invisible grilles permitted — SS316 Teflon-coated cable 2.0mm, 2.0-inch gap, fully installed outside railing.)</span></li>
+          <li><strong>Bidai Kayu (Bamboo Roller Blinds)</strong> — Dibenarkan, jenis kayu berwarna coklat gelap sahaja. <span class="en">(Bamboo roller blinds permitted — dark brown wood colour only.)</span></li>
+        </ul>
       </div>
 
       <!-- Rubbish Disposal -->
@@ -606,8 +625,19 @@
 
       <!-- Tenancy Rules -->
       <div id="hr-tenancy" class="hr-sub" style="display:none;">
-        <h3 style="font-size:15px;color:var(--navy);margin:14px 0 6px;">Pematuhan Undang-Undang Kecil Tambahan <span class="en">— Penyewaan kepada Warga Asing Profesional</span></h3>
-        <p style="font-size:14px;line-height:1.6;">Berkuat kuasa serta merta dan wajib dipatuhi oleh semua pemilik unit yang menyewakan unit kepada warga asing profesional:</p>
+        <h3 style="font-size:15px;color:var(--navy);margin:14px 0 6px;">Peraturan Penyewaan <span class="en">Tenancy Rules</span></h3>
+
+        <div style="background:#fff3cd;border:1px solid #ffc107;border-radius:6px;padding:10px 12px;font-size:13px;margin-bottom:12px;">
+          ⚠️ <strong>Pindaan AGM 24 Jun 2023:</strong> Warga asing samada pekerja professional atau bukan professional, <strong>tidak dibenarkan menyewa</strong> di Kondominium Delima Emas. <span style="color:var(--muted);">(As of AGM Jun 2023, foreign nationals — professional or otherwise — are no longer permitted to rent units here.)</span>
+        </div>
+
+        <h3 style="font-size:14px;color:var(--navy);margin:14px 0 6px;">Had Penghuni / Occupancy Limit</h3>
+        <ul class="rules-list">
+          <li>Unit yang disewa hendaklah tidak melebihi <strong>6 orang</strong> sahaja. <span class="en">(Maximum 6 occupants per rented unit.)</span></li>
+        </ul>
+
+        <h3 style="font-size:14px;color:var(--navy);margin:14px 0 6px;">Pematuhan Undang-Undang Kecil Tambahan (AGM Sep 2025)</h3>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:6px;">Berkuat kuasa serta merta dan wajib dipatuhi oleh semua pemilik unit.</p>
         <ul class="rules-list">
           <li><strong>1) Pendaftaran penyewa</strong> — Pemilik wajib mendaftarkan penyewa warga asing profesional dengan Pejabat Pengurusan sebelum penyewa menduduki unit.</li>
           <li><strong>2) Dokumen sokongan</strong> — Salinan pasport &amp; visa yang sah, serta salinan kontrak perjanjian penyewaan, perlu dikemukakan kepada pengurusan.</li>
@@ -618,7 +648,7 @@
         </ul>
       </div>
 
-      <p style="font-size:11px;color:var(--muted);margin-top:18px;">This page summarises the Residents' House Rules &amp; Regulations handbook and recent management circulars. For the full legal text, please refer to the official documents at the Management Office.</p>
+      <p style="font-size:11px;color:var(--muted);margin-top:18px;">This page summarises the Residents' House Rules &amp; Regulations handbook and recent management circulars (AGM Jun 2023, Jul 2024, Sep 2025). For the full legal text, please refer to the official documents at the Management Office.</p>
     </div>
   </div>
 
@@ -830,6 +860,7 @@
         <button class="sub-tab-btn" data-sub="adm-posts">📋 Notices / Minutes / Forms</button>
         <button class="sub-tab-btn" data-sub="adm-bookings">🏊 Bookings</button>
         <button class="sub-tab-btn" data-sub="adm-orgchart">🧑‍💼 Organization Chart</button>
+        <button class="sub-tab-btn" data-sub="adm-cloud">☁️ Cloud Setup</button>
       </div>
 
       <!-- Edit free-text pages -->
@@ -901,12 +932,12 @@
             <textarea id="postBody" placeholder="Tambahan maklumat..."></textarea>
           </div>
           <div class="form-group">
-            <label for="postFile">Attach File <span class="en">(PDF / Image / Document)</span></label>
+            <label for="postFile">Attach File <span class="en">(PDF / Image / Document, optional)</span></label>
             <input type="file" id="postFile" accept=".pdf,.jpg,.jpeg,.png,.docx,.xlsx">
-            <div class="hint">Max ~3 MB. Files are stored in this browser's local storage — large or many files may hit the storage limit.</div>
-            <div class="field-error" id="err-postFile">File is too large. Please choose a file under 3 MB.</div>
+            <div class="hint">Max 20 MB. Uploaded directly to GitHub — requires GitHub File Uploads to be connected first (Admin → Cloud Setup).</div>
+            <div class="field-error" id="err-postFile">File is too large (max 20 MB), or GitHub File Uploads isn't connected yet — go to Admin → Cloud Setup.</div>
           </div>
-          <button class="primary" id="publishBtn" onclick="addPost()">Publish / Upload</button>
+          <button class="primary" id="publishBtn" onclick="addPost()">Publish</button>
         </div>
 
         <div class="card">
@@ -937,10 +968,126 @@
           <button class="primary" onclick="saveOrgChart()" style="margin-top:10px;">Save All</button>
         </div>
       </div>
+
+      <!-- Cloud Setup -->
+      <div id="adm-cloud" class="sub-section">
+        <div class="card">
+          <h2>☁️ Cloud Setup <span class="en">Sambungan Storan Awan</span></h2>
+          <p style="font-size:13px;line-height:1.6;margin-top:6px;">
+            Connect this portal to a free online JSON storage account so all data (announcements, bookings,
+            visitor passes, etc.) is shared by everyone who opens this page — on any device, without them
+            needing to set up anything.
+          </p>
+
+          <div class="security-note" style="margin:12px 0;">
+            ⚠️ <strong>3 steps are required</strong> for other residents to see your data — most people only do
+            steps 1–2 and then wonder why their phone shows nothing. Step 3 (below) is what makes it actually
+            shared.
+          </div>
+
+          <h3 style="font-size:14px;color:var(--navy);margin:16px 0 6px;">Step 1 — Create a free account (2 minutes)</h3>
+          <ol style="font-size:13px;line-height:1.8;padding-left:20px;">
+            <li>Open <a href="https://jsonbin.io/login" target="_blank" rel="noopener">jsonbin.io</a> and sign up (Google/GitHub/email).</li>
+            <li>Go to <a href="https://jsonbin.io/api-keys" target="_blank" rel="noopener">jsonbin.io/api-keys</a> and copy your <strong>X-Master-Key</strong>.</li>
+            <li>Paste it below and click "Connect" — the portal will automatically create a <strong>public</strong> storage bin for you (public means anyone with the Bin ID can read it — that's what lets residents view the portal with no setup; only this Master Key can change it).</li>
+          </ol>
+
+          <h3 style="font-size:14px;color:var(--navy);margin:18px 0 6px;">Step 2 — Connect (this device only)</h3>
+          <div class="form-group">
+            <label for="cloudMasterKey">JSONBin Master Key</label>
+            <input type="text" id="cloudMasterKey" placeholder="$2a$10$...">
+          </div>
+          <div class="form-group">
+            <label for="cloudBinId">Bin ID <span class="en">(leave blank the first time — it will be created automatically)</span></label>
+            <input type="text" id="cloudBinId" placeholder="auto-filled after first connect">
+          </div>
+          <button class="primary" onclick="connectCloud()" id="cloudConnectBtn">Connect</button>
+
+          <div id="cloudConnectedStatus" style="display:none;margin-top:14px;">
+            <p style="font-size:13px;">✅ Connected on this device. You can now save changes from here.</p>
+            <p class="hint">Bin visibility: <strong id="cloudVisibilityDisplay">checking…</strong></p>
+            <p class="hint">Approx. data size: <strong id="cloudSizeDisplay">checking…</strong></p>
+            <button class="primary" onclick="makeCurrentBinPublic()" id="makePublicBtn" style="margin-top:6px;">Make Bin Public</button>
+            <p class="hint">Required so other devices can read the portal without a key. Safe — only this Master Key can still change the data.</p>
+          </div>
+
+          <h3 style="font-size:14px;color:var(--navy);margin:18px 0 6px;">Step 3 — Make it shared (required, one-time)</h3>
+          <p style="font-size:13px;line-height:1.6;">
+            Right now, only <strong>this browser</strong> knows the Bin ID. Other devices (residents' phones, your
+            own phone) won't see any data until you bake the Bin ID into the page itself:
+          </p>
+          <ol style="font-size:13px;line-height:1.8;padding-left:20px;">
+            <li>Copy your Bin ID: <code id="cloudBinIdDisplay" style="font-weight:700;">—</code></li>
+            <li>Send this Bin ID to whoever is helping you edit the portal file (e.g. paste it back here in this chat with Claude), and ask to have it set as the page's permanent shared Bin ID.</li>
+            <li>Re-download the updated file and re-publish it to GitHub, like before.</li>
+          </ol>
+          <p class="hint">After that one-time step, every visitor — including your own phone — will read the same shared data automatically, with no setup on their end.</p>
+
+          <div style="margin-top:14px;">
+            <button class="secondary" onclick="disconnectCloud()">Disconnect this device</button>
+          </div>
+
+          <div class="security-note" style="margin-top:14px;">
+            ⚠️ Your Master Key gives full read/write access to your JSONBin account — treat it like a password.
+            It is stored only in this browser's local storage and only needed here in the Admin panel to make
+            changes. Regular residents never need it, since reading the portal doesn't require any key.
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>📎 File Uploads <span class="en">Muat Naik Fail ke GitHub</span></h2>
+          <p style="font-size:13px;line-height:1.6;margin-top:6px;">
+            Photos and documents attached to Announcements / Minutes / Forms are too large to store in JSONBin.
+            Instead, connect your GitHub repository here — files will be uploaded directly into it, and only the
+            resulting link (a few bytes of text) is saved in the cloud database.
+          </p>
+
+          <h3 style="font-size:14px;color:var(--navy);margin:16px 0 6px;">Step 1 — Create a GitHub token (2 minutes)</h3>
+          <ol style="font-size:13px;line-height:1.8;padding-left:20px;">
+            <li>Open <a href="https://github.com/settings/tokens/new" target="_blank" rel="noopener">github.com/settings/tokens/new</a> (Fine-grained token).</li>
+            <li>Set <strong>Repository access</strong> to "Only select repositories" → choose your portal repo (e.g. <code>JoePinkman99/delima-emas-portal</code>).</li>
+            <li>Under <strong>Permissions → Repository permissions</strong>, set <strong>Contents</strong> to <strong>Read and write</strong>.</li>
+            <li>Generate the token and copy it (starts with <code>github_pat_...</code>).</li>
+          </ol>
+
+          <h3 style="font-size:14px;color:var(--navy);margin:18px 0 6px;">Step 2 — Connect</h3>
+          <div class="form-group">
+            <label for="ghOwner">GitHub Username / Organization</label>
+            <input type="text" id="ghOwner" placeholder="contoh: JoePinkman99">
+          </div>
+          <div class="form-group">
+            <label for="ghRepo">Repository Name</label>
+            <input type="text" id="ghRepo" placeholder="contoh: delima-emas-portal">
+          </div>
+          <div class="form-group">
+            <label for="ghBranch">Branch <span class="en">(usually "main")</span></label>
+            <input type="text" id="ghBranch" placeholder="main" value="main">
+          </div>
+          <div class="form-group">
+            <label for="ghToken">GitHub Personal Access Token</label>
+            <input type="text" id="ghToken" placeholder="github_pat_...">
+          </div>
+          <button class="primary" onclick="saveGithubConfig()">Save GitHub Settings</button>
+
+          <div id="githubConnectedStatus" style="display:none;margin-top:14px;">
+            <p style="font-size:13px;">✅ Saved on this device. New uploads will be sent to <strong id="ghRepoDisplay"></strong>.</p>
+            <button class="secondary" onclick="disconnectGithub()">Disconnect</button>
+          </div>
+
+          <div class="security-note" style="margin-top:14px;">
+            ⚠️ This token can write files to your repository — treat it like a password. It is stored only in this
+            browser's local storage and only used here in the Admin panel to upload files. Regular residents never
+            need it — and since GitHub Pages requires this repository to be public, any file you upload here is
+            viewable by anyone with the link, not just residents. Don't attach anything confidential (e.g. full IC
+            numbers, bank statements).
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
 </div>
+
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
@@ -958,7 +1105,6 @@ const KEY_BOOKINGS = "delimaEmasBookings"; // [...]
 const KEY_OUTSTANDING = "delimaEmasOutstanding"; // {amount, asOf}
 const KEY_VISITOR_PASSES = "delimaEmasVisitorPasses"; // [...]
 const KEY_ORGCHART = "delimaEmasOrgChart"; // {roleKey: {name, photo}}
-const MAX_FILE_BYTES = 3 * 1024 * 1024; // 3 MB
 const MAX_PHOTO_BYTES = 1 * 1024 * 1024; // 1 MB per org chart photo
 
 const ORG_ROLES = [
@@ -971,28 +1117,260 @@ const ORG_ROLES = [
   { key: 'technician', label: 'Maintenance Technician', labelMs: 'Juruteknik Penyelenggaraan' }
 ];
 
-/* ---------- Cloud storage helpers (window.storage, shared across all users) ---------- */
-async function cloudGet(key, fallback) {
-  try {
-    const result = await window.storage.get(key, true);
-    if (!result) return fallback;
-    return JSON.parse(result.value);
-  } catch (e) {
-    return fallback;
+/* ---------- Cloud storage connection (JSONBin.io) ----------
+   One JSONBin "bin" holds the entire portal's data as a single JSON object,
+   keyed by our existing storage keys (KEY_POSTS, KEY_PAGES, etc).
+
+   IMPORTANT: the bin is created as PUBLIC, so anyone who opens this page can
+   READ shared data with no key at all. Only WRITING (saving changes) needs
+   the admin's Master Key, entered once in Admin → Cloud Setup on their own
+   device — it is never required for ordinary residents just browsing.
+
+   PORTAL_BIN_ID is meant to be shared by everyone: once the admin creates the
+   bin the first time, paste the Bin ID shown into this constant and republish
+   the file, so every visitor automatically reads the same shared bin with
+   zero setup. Until that's done, it falls back to whatever Bin ID the admin
+   saved locally on their own device (so the admin can keep working before
+   sharing the final Bin ID with everyone else). */
+const PORTAL_BIN_ID = "6a36db23f5f4af5e29155cfe"; // shared bin — every visitor reads from this
+const KEY_CLOUD_CONFIG = "delimaEmasCloudConfig"; // {masterKey, binId} — local, admin-only (write access)
+const JSONBIN_BASE = "https://api.jsonbin.io/v3/b";
+let jsonbinCache = null;       // in-memory copy of the whole bin's contents
+let jsonbinCacheLoaded = false;
+
+function getCloudConfig() {
+  try { return JSON.parse(localStorage.getItem(KEY_CLOUD_CONFIG) || 'null'); }
+  catch (e) { return null; }
+}
+function setCloudConfig(cfg) {
+  try { localStorage.setItem(KEY_CLOUD_CONFIG, JSON.stringify(cfg)); return true; }
+  catch (e) { return false; }
+}
+/* The Bin ID everyone (including anonymous visitors) should read from:
+   prefer the one baked into the page, fall back to the admin's local config. */
+function getReadBinId() {
+  if (PORTAL_BIN_ID) return PORTAL_BIN_ID;
+  const cfg = getCloudConfig();
+  return cfg ? cfg.binId : null;
+}
+function isCloudConfigured() {
+  return !!getReadBinId();
+}
+function isCloudWritable() {
+  const cfg = getCloudConfig();
+  return !!(cfg && cfg.masterKey && cfg.binId);
+}
+
+async function jsonbinFetchAll(force) {
+  const binId = getReadBinId();
+  if (!binId) throw new Error('not-configured');
+  if (jsonbinCacheLoaded && !force) return jsonbinCache;
+
+  // Public bin: no auth header needed to read.
+  const res = await fetch(JSONBIN_BASE + '/' + binId + '/latest');
+  if (!res.ok) throw new Error('jsonbin GET failed: ' + res.status);
+  const data = await res.json();
+  jsonbinCache = (data && data.record) ? data.record : {};
+  jsonbinCacheLoaded = true;
+  return jsonbinCache;
+}
+
+async function jsonbinSaveAll(fullData) {
+  const cfg = getCloudConfig();
+  if (!cfg || !cfg.masterKey || !cfg.binId) throw new Error('not-writable');
+
+  const res = await fetch(JSONBIN_BASE + '/' + cfg.binId, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Master-Key': cfg.masterKey
+    },
+    body: JSON.stringify(fullData)
+  });
+  if (!res.ok) throw new Error('jsonbin PUT failed: ' + res.status);
+  jsonbinCache = fullData;
+  jsonbinCacheLoaded = true;
+  return true;
+}
+
+/* ---------- GitHub File Uploads ----------
+   Files attached to posts are uploaded directly to a GitHub repo via the
+   Contents API, and only the resulting raw URL (tiny text) is stored in
+   JSONBin. This avoids JSONBin's small bin size limit entirely. */
+const KEY_GITHUB_CONFIG = "delimaEmasGithubConfig"; // {owner, repo, branch, token} — local, admin-only
+const MAX_GITHUB_FILE_BYTES = 20 * 1024 * 1024; // 20 MB (GitHub Contents API practical limit)
+
+function getGithubConfig() {
+  try { return JSON.parse(localStorage.getItem(KEY_GITHUB_CONFIG) || 'null'); }
+  catch (e) { return null; }
+}
+function setGithubConfig(cfg) {
+  try { localStorage.setItem(KEY_GITHUB_CONFIG, JSON.stringify(cfg)); return true; }
+  catch (e) { return false; }
+}
+function isGithubConfigured() {
+  const cfg = getGithubConfig();
+  return !!(cfg && cfg.owner && cfg.repo && cfg.token);
+}
+
+function arrayBufferToBase64(buffer) {
+  let binary = '';
+  const bytes = new Uint8Array(buffer);
+  const chunkSize = 0x8000;
+  for (let i = 0; i < bytes.length; i += chunkSize) {
+    binary += String.fromCharCode.apply(null, bytes.subarray(i, i + chunkSize));
   }
+  return btoa(binary);
+}
+
+async function uploadFileToGithub(file) {
+  const cfg = getGithubConfig();
+  if (!cfg || !cfg.owner || !cfg.repo || !cfg.token) {
+    throw new Error('not-configured');
+  }
+  const branch = cfg.branch || 'main';
+  const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+  const path = 'uploads/' + Date.now() + '-' + safeName;
+
+  const buffer = await file.arrayBuffer();
+  const base64Content = arrayBufferToBase64(buffer);
+
+  const url = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/${path}`;
+  const res = await fetch(url, {
+    method: 'PUT',
+    headers: {
+      'Authorization': 'Bearer ' + cfg.token,
+      'Accept': 'application/vnd.github+json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      message: 'Upload ' + safeName + ' via portal',
+      content: base64Content,
+      branch: branch
+    })
+  });
+
+  if (!res.ok) {
+    let detail = '';
+    try {
+      const errBody = await res.json();
+      detail = errBody && errBody.message ? errBody.message : '';
+    } catch (e) { /* not JSON */ }
+    throw new Error('GitHub upload failed: HTTP ' + res.status + (detail ? ' — ' + detail : ''));
+  }
+
+  const data = await res.json();
+  return data.content && data.content.download_url ? data.content.download_url : null;
+}
+
+async function jsonbinMakePublic(masterKey, binId) {
+  const res = await fetch(JSONBIN_BASE + '/' + binId + '/meta/privacy', {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Master-Key': masterKey,
+      'X-Bin-Private': 'false'
+    },
+    body: JSON.stringify({})
+  });
+  if (!res.ok) {
+    let detail = '';
+    try {
+      const errBody = await res.json();
+      detail = errBody && errBody.message ? errBody.message : '';
+    } catch (e) { /* not JSON */ }
+    throw new Error('Could not make bin public: HTTP ' + res.status + (detail ? ' — ' + detail : ''));
+  }
+  return true;
+}
+
+async function jsonbinCreateBin(masterKey) {
+  const res = await fetch(JSONBIN_BASE, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Master-Key': masterKey,
+      'X-Bin-Name': 'delima-emas-portal',
+      'X-Bin-Private': 'false' // public bin: anyone with the Bin ID can read it, no key needed
+    },
+    body: JSON.stringify({ initialized: true })
+  });
+  if (!res.ok) {
+    let detail = '';
+    try {
+      const errBody = await res.json();
+      detail = errBody && errBody.message ? errBody.message : '';
+    } catch (e) { /* response wasn't JSON */ }
+    const err = new Error('jsonbin CREATE failed: ' + res.status + (detail ? ' — ' + detail : ''));
+    err.status = res.status;
+    err.detail = detail;
+    throw err;
+  }
+  const data = await res.json();
+  return data.metadata.id;
+}
+
+/* ---------- Cloud storage helpers ----------
+   Priority: JSONBin (if configured) → window.storage (Claude artifact preview) → local cache fallback. */
+async function cloudGet(key, fallback) {
+  if (isCloudConfigured()) {
+    try {
+      const all = await jsonbinFetchAll();
+      const value = (all && Object.prototype.hasOwnProperty.call(all, key)) ? all[key] : fallback;
+      try { localStorage.setItem('cache_' + key, JSON.stringify(value)); } catch (e) {}
+      return value;
+    } catch (e) {
+      setSyncStatus('error');
+      try {
+        const cached = localStorage.getItem('cache_' + key);
+        if (cached) return JSON.parse(cached);
+      } catch (e2) {}
+      return fallback;
+    }
+  }
+  if (window.storage) {
+    try {
+      const result = await window.storage.get(key, true);
+      if (!result) return fallback;
+      return JSON.parse(result.value);
+    } catch (e) {
+      return fallback;
+    }
+  }
+  return fallback;
 }
 async function cloudSet(key, value, failMsg) {
-  try {
-    const result = await window.storage.set(key, JSON.stringify(value), true);
-    if (!result) {
-      showToast(failMsg || 'Could not save to cloud. Please try again.');
+  if (isCloudConfigured()) {
+    if (!isCloudWritable()) {
+      showToast('You need to connect with the Master Key in Admin → Cloud Setup on this device before you can save changes.');
       return false;
     }
-    return true;
-  } catch (e) {
-    showToast(failMsg || 'Could not save to cloud. Please check your connection and try again.');
-    return false;
+    try {
+      const all = await jsonbinFetchAll(true); // refresh first so we don't clobber other residents' concurrent edits
+      all[key] = value;
+      await jsonbinSaveAll(all);
+      try { localStorage.setItem('cache_' + key, JSON.stringify(value)); } catch (e) {}
+      return true;
+    } catch (e) {
+      showToast(failMsg || 'Could not save to cloud. Please check your connection and try again.');
+      return false;
+    }
   }
+  if (window.storage) {
+    try {
+      const result = await window.storage.set(key, JSON.stringify(value), true);
+      if (!result) {
+        showToast(failMsg || 'Could not save to cloud. Please try again.');
+        return false;
+      }
+      return true;
+    } catch (e) {
+      showToast(failMsg || 'Could not save to cloud. Please check your connection and try again.');
+      return false;
+    }
+  }
+  showToast('Cloud storage is not connected yet. Go to Admin → Cloud Setup to connect.');
+  return false;
 }
 
 function getPosts() { return cloudGet(KEY_POSTS, {"announcements":[],"minutes":[],"forms":[]}); }
@@ -1099,6 +1477,7 @@ document.querySelectorAll('.sub-tab-btn[data-sub]').forEach(btn => {
     document.querySelectorAll('.sub-section').forEach(s => s.classList.remove('active'));
     btn.classList.add('active');
     document.getElementById(btn.dataset.sub).classList.add('active');
+    if (btn.dataset.sub === 'adm-cloud') renderCloudSetupUI();
   });
 });
 
@@ -1295,7 +1674,7 @@ async function renderPostList(category, containerId) {
       <h2 style="font-size:15px;">${escapeHtml(p.title)}</h2>
       <div class="date">📅 ${formatDate(p.date)}</div>
       ${p.body ? `<p>${escapeHtml(p.body)}</p>` : ''}
-      ${p.file ? `<a class="file-link" href="${p.file}" download="${escapeHtml(p.fileName)}">📎 ${escapeHtml(p.fileName)}</a>` : ''}
+      ${p.file ? `<a class="file-link" href="${p.file}" target="_blank" rel="noopener">📎 ${escapeHtml(p.fileName || 'Attachment')}</a>` : ''}
     </div>
   `).join('');
 }
@@ -1372,9 +1751,15 @@ async function addPost() {
     document.getElementById('err-postTitle').style.display = 'block';
     hasError = true;
   }
-  if (fileInput.files && fileInput.files[0] && fileInput.files[0].size > MAX_FILE_BYTES) {
-    document.getElementById('err-postFile').style.display = 'block';
-    hasError = true;
+  const hasFile = fileInput.files && fileInput.files[0];
+  if (hasFile) {
+    if (fileInput.files[0].size > MAX_GITHUB_FILE_BYTES) {
+      document.getElementById('err-postFile').style.display = 'block';
+      hasError = true;
+    } else if (!isGithubConfigured()) {
+      document.getElementById('err-postFile').style.display = 'block';
+      hasError = true;
+    }
   }
   if (hasError) return;
 
@@ -1382,29 +1767,29 @@ async function addPost() {
 
   const publishBtn = document.getElementById('publishBtn');
   publishBtn.disabled = true;
-  publishBtn.textContent = 'Uploading...';
 
-  if (fileInput.files && fileInput.files[0]) {
-    const file = fileInput.files[0];
-    const reader = new FileReader();
-    reader.onload = async function(e) {
-      post.file = e.target.result;
+  if (hasFile) {
+    publishBtn.textContent = 'Uploading file...';
+    try {
+      const file = fileInput.files[0];
+      const url = await uploadFileToGithub(file);
+      post.file = url;
       post.fileName = file.name;
-      await finishAddPost(category, post);
-    };
-    reader.onerror = function() {
-      showToast('Could not read file. Try again or choose a different file.');
+    } catch (e) {
+      console.error('GitHub upload error:', e);
+      showToast('Could not upload file: ' + (e && e.message ? e.message : 'unknown error'));
       resetPublishBtn();
-    };
-    reader.readAsDataURL(file);
-  } else {
-    await finishAddPost(category, post);
+      return;
+    }
   }
+
+  publishBtn.textContent = 'Publishing...';
+  await finishAddPost(category, post);
 }
 function resetPublishBtn() {
   const publishBtn = document.getElementById('publishBtn');
   publishBtn.disabled = false;
-  publishBtn.textContent = 'Publish / Upload';
+  publishBtn.textContent = 'Publish';
 }
 async function finishAddPost(category, post) {
   setSyncStatus('loading');
@@ -1441,7 +1826,7 @@ async function renderManageList() {
       <h2 style="font-size:15px;">${escapeHtml(p.title)}</h2>
       <div class="date">📅 ${formatDate(p.date)}</div>
       ${p.body ? `<p>${escapeHtml(p.body)}</p>` : ''}
-      ${p.file ? `<a class="file-link" href="${p.file}" download="${escapeHtml(p.fileName)}">📎 ${escapeHtml(p.fileName)}</a>` : ''}
+      ${p.file ? `<a class="file-link" href="${p.file}" target="_blank" rel="noopener">📎 ${escapeHtml(p.fileName || 'Attachment')}</a>` : ''}
     </div>
   `).join('');
 }
@@ -1687,6 +2072,7 @@ async function checkLogin() {
   document.getElementById('adminPanel').style.display = loggedIn ? 'block' : 'none';
   if (loggedIn) {
     setSyncStatus('loading');
+    renderCloudSetupUI();
     await Promise.all([
       renderManageList(),
       renderAdminBookings(),
@@ -1800,6 +2186,191 @@ async function setPassStatus(id, status) {
       setSyncStatus('error');
     }
   }
+}
+
+/* ---------- Cloud Setup UI ---------- */
+function renderCloudSetupUI() {
+  const cfg = getCloudConfig();
+  const masterKeyInput = document.getElementById('cloudMasterKey');
+  const binIdInput = document.getElementById('cloudBinId');
+  if (!masterKeyInput) return; // not on this sub-tab's first render yet
+
+  if (cfg) {
+    masterKeyInput.value = cfg.masterKey || '';
+    binIdInput.value = cfg.binId || '';
+  }
+  updateCloudConnectedStatusUI();
+
+  const ghCfg = getGithubConfig();
+  const ghOwnerInput = document.getElementById('ghOwner');
+  if (ghOwnerInput && ghCfg) {
+    document.getElementById('ghOwner').value = ghCfg.owner || '';
+    document.getElementById('ghRepo').value = ghCfg.repo || '';
+    document.getElementById('ghBranch').value = ghCfg.branch || 'main';
+    document.getElementById('ghToken').value = ghCfg.token || '';
+  }
+  updateGithubConnectedStatusUI();
+}
+
+async function connectCloud() {
+  const masterKey = document.getElementById('cloudMasterKey').value.replace(/\s+/g, '').trim();
+  let binId = document.getElementById('cloudBinId').value.replace(/\s+/g, '').trim();
+
+  if (!masterKey) {
+    showToast('Please paste your JSONBin Master Key.');
+    return;
+  }
+
+  const btn = document.getElementById('cloudConnectBtn');
+  btn.disabled = true;
+  btn.textContent = 'Connecting...';
+
+  try {
+    if (!binId) {
+      // First-time setup: create a new bin automatically
+      binId = await jsonbinCreateBin(masterKey);
+      document.getElementById('cloudBinId').value = binId;
+    } else {
+      // Verify the existing bin + key actually work before saving
+      const res = await fetch(JSONBIN_BASE + '/' + binId + '/latest', {
+        headers: { 'X-Master-Key': masterKey }
+      });
+      if (!res.ok) {
+        let detail = '';
+        try {
+          const errBody = await res.json();
+          detail = errBody && errBody.message ? errBody.message : '';
+        } catch (e) { /* not JSON */ }
+        throw new Error('Could not access that Bin ID with this Master Key' + (detail ? ' — ' + detail : ' (HTTP ' + res.status + ')'));
+      }
+    }
+
+    setCloudConfig({ masterKey, binId });
+    jsonbinCache = null;
+    jsonbinCacheLoaded = false;
+
+    updateCloudConnectedStatusUI();
+    showToast('Connected! Loading data from the cloud...');
+    await renderAllPublic();
+    showToast('Connected to cloud storage.');
+  } catch (e) {
+    console.error('JSONBin connect error:', e);
+    showToast('Could not connect: ' + (e && e.message ? e.message : 'unknown error'));
+  }
+
+  btn.disabled = false;
+  btn.textContent = 'Connect';
+}
+
+function updateCloudConnectedStatusUI() {
+  const statusEl = document.getElementById('cloudConnectedStatus');
+  const binIdDisplay = document.getElementById('cloudBinIdDisplay');
+  if (!statusEl) return;
+  if (isCloudWritable()) {
+    const cfg = getCloudConfig();
+    statusEl.style.display = 'block';
+    if (binIdDisplay) binIdDisplay.textContent = cfg.binId;
+    checkBinVisibility(cfg);
+  } else {
+    statusEl.style.display = 'none';
+    if (binIdDisplay) binIdDisplay.textContent = '—';
+  }
+}
+
+async function checkBinVisibility(cfg) {
+  const visEl = document.getElementById('cloudVisibilityDisplay');
+  const sizeEl = document.getElementById('cloudSizeDisplay');
+  const btn = document.getElementById('makePublicBtn');
+  if (!visEl || !cfg) return;
+  try {
+    const res = await fetch(JSONBIN_BASE + '/' + cfg.binId + '/latest', {
+      headers: { 'X-Master-Key': cfg.masterKey }
+    });
+    if (!res.ok) { visEl.textContent = 'unknown'; if (sizeEl) sizeEl.textContent = 'unknown'; return; }
+    const data = await res.json();
+    const isPrivate = !!(data && data.metadata && data.metadata.private);
+    visEl.textContent = isPrivate ? '🔒 Private (residents cannot read it yet)' : '🌍 Public (residents can read it)';
+    if (btn) btn.style.display = isPrivate ? 'inline-block' : 'none';
+    if (sizeEl) {
+      const bytes = new Blob([JSON.stringify(data.record || {})]).size;
+      const kb = (bytes / 1024).toFixed(1);
+      sizeEl.textContent = kb + ' KB';
+    }
+  } catch (e) {
+    visEl.textContent = 'unknown';
+    if (sizeEl) sizeEl.textContent = 'unknown';
+  }
+}
+
+async function makeCurrentBinPublic() {
+  const cfg = getCloudConfig();
+  if (!cfg || !cfg.masterKey || !cfg.binId) {
+    showToast('Connect with your Master Key first.');
+    return;
+  }
+  const btn = document.getElementById('makePublicBtn');
+  btn.disabled = true;
+  btn.textContent = 'Updating...';
+  try {
+    await jsonbinMakePublic(cfg.masterKey, cfg.binId);
+    showToast('Bin is now public — residents can read the portal.');
+    await checkBinVisibility(cfg);
+  } catch (e) {
+    console.error('Make public error:', e);
+    showToast('Could not change visibility: ' + (e && e.message ? e.message : 'unknown error'));
+  }
+  btn.disabled = false;
+  btn.textContent = 'Make Bin Public';
+}
+
+function disconnectCloud() {
+  setCloudConfig(null);
+  jsonbinCache = null;
+  jsonbinCacheLoaded = false;
+  updateCloudConnectedStatusUI();
+  document.getElementById('cloudMasterKey').value = '';
+  document.getElementById('cloudBinId').value = '';
+  showToast('Disconnected from cloud storage.');
+}
+
+/* ---------- GitHub File Uploads UI ---------- */
+function saveGithubConfig() {
+  const owner = document.getElementById('ghOwner').value.trim();
+  const repo = document.getElementById('ghRepo').value.trim();
+  const branch = document.getElementById('ghBranch').value.trim() || 'main';
+  const token = document.getElementById('ghToken').value.replace(/\s+/g, '').trim();
+
+  if (!owner || !repo || !token) {
+    showToast('Please fill in GitHub username, repository, and token.');
+    return;
+  }
+
+  setGithubConfig({ owner, repo, branch, token });
+  updateGithubConnectedStatusUI();
+  showToast('GitHub file uploads connected on this device.');
+}
+
+function updateGithubConnectedStatusUI() {
+  const statusEl = document.getElementById('githubConnectedStatus');
+  const repoDisplay = document.getElementById('ghRepoDisplay');
+  if (!statusEl) return;
+  if (isGithubConfigured()) {
+    const cfg = getGithubConfig();
+    statusEl.style.display = 'block';
+    if (repoDisplay) repoDisplay.textContent = cfg.owner + '/' + cfg.repo;
+  } else {
+    statusEl.style.display = 'none';
+  }
+}
+
+function disconnectGithub() {
+  setGithubConfig(null);
+  updateGithubConnectedStatusUI();
+  document.getElementById('ghOwner').value = '';
+  document.getElementById('ghRepo').value = '';
+  document.getElementById('ghBranch').value = 'main';
+  document.getElementById('ghToken').value = '';
+  showToast('Disconnected GitHub file uploads.');
 }
 
 /* ---------- Init ---------- */
