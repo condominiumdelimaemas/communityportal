@@ -293,6 +293,13 @@
   .org-admin-fields label { font-size: 12px; margin-bottom: 3px; }
   .org-admin-fields input[type="text"] { margin-bottom: 6px; }
 
+  .traffic-bars { display: flex; flex-direction: column; gap: 8px; }
+  .traffic-bar-row { display: flex; align-items: center; gap: 10px; }
+  .traffic-bar-label { font-size: 12px; color: var(--ink); width: 110px; flex-shrink: 0; }
+  .traffic-bar-track { flex: 1; height: 16px; background: #eee; border-radius: 4px; overflow: hidden; }
+  .traffic-bar-fill { height: 100%; background: var(--gold); border-radius: 4px; min-width: 2px; }
+  .traffic-bar-count { font-size: 12px; font-weight: 700; color: var(--navy); width: 30px; text-align: right; flex-shrink: 0; }
+
   .security-note {
     background: #fff8e1; border: 1px solid var(--gold-soft); border-radius: 6px;
     padding: 10px 12px; font-size: 12px; color: #7a5d10; margin-bottom: 14px; line-height: 1.5;
@@ -861,6 +868,7 @@
         <button class="sub-tab-btn" data-sub="adm-bookings">🏊 Bookings</button>
         <button class="sub-tab-btn" data-sub="adm-orgchart">🧑‍💼 Organization Chart</button>
         <button class="sub-tab-btn" data-sub="adm-cloud">☁️ Cloud Setup</button>
+        <button class="sub-tab-btn" data-sub="adm-traffic">📈 Traffic Monitor</button>
       </div>
 
       <!-- Edit free-text pages -->
@@ -963,7 +971,7 @@
       <div id="adm-orgchart" class="sub-section">
         <div class="card">
           <h2>Edit Organization Chart <span class="en">Edit Carta Organisasi</span></h2>
-          <p style="font-size:12px;color:var(--muted);margin-bottom:6px;">Kemaskini nama dan muat naik gambar untuk setiap jawatan. Gambar disimpan dalam storan browser ini (max ~1MB setiap satu).</p>
+          <p style="font-size:12px;color:var(--muted);margin-bottom:6px;">Kemaskini nama dan muat naik gambar untuk setiap jawatan. Gambar dimuat naik terus ke GitHub (max 5MB setiap satu) — pastikan GitHub File Uploads telah disambung dahulu (Admin → Cloud Setup).</p>
           <div id="orgAdminList"></div>
           <button class="primary" onclick="saveOrgChart()" style="margin-top:10px;">Save All</button>
         </div>
@@ -1083,6 +1091,34 @@
           </div>
         </div>
       </div>
+
+      <!-- Traffic Monitor -->
+      <div id="adm-traffic" class="sub-section">
+        <div class="card">
+          <h2>📈 Traffic Monitor <span class="en">Pemantauan Trafik</span></h2>
+          <p style="font-size:13px;line-height:1.6;margin-top:6px;">
+            Counts page visits to this portal (no personal data collected — just a timestamp per visit, stored in
+            the same cloud database as everything else). Counts page loads, not unique people.
+          </p>
+          <div class="security-note" style="margin-top:10px;">
+            ⚠️ <strong>Important limitation:</strong> because writing to the cloud database requires the admin
+            Master Key (for security — see Cloud Setup), only visits from devices that have connected with that
+            key are counted. Ordinary residents simply browsing the public portal are <strong>not</strong> counted,
+            since they never enter the Master Key. This is best used as a rough activity log for admin/committee
+            access, not a true visitor count of all residents.
+          </div>
+          <p style="font-size:13px;margin-top:10px;">Total visits recorded (all time): <strong id="trafficTotalAllTime">—</strong></p>
+
+          <div class="sub-tabs" style="margin-top:14px;">
+            <button class="sub-tab-btn" data-traffic="hourly">Hourly <span class="en" style="display:block;font-size:10px;">last 24h</span></button>
+            <button class="sub-tab-btn active" data-traffic="daily">Daily <span class="en" style="display:block;font-size:10px;">last 30d</span></button>
+            <button class="sub-tab-btn" data-traffic="weekly">Weekly <span class="en" style="display:block;font-size:10px;">last 12w</span></button>
+            <button class="sub-tab-btn" data-traffic="yearly">Yearly <span class="en" style="display:block;font-size:10px;">last 5y</span></button>
+          </div>
+
+          <div id="trafficMonitorContent" style="margin-top:14px;"></div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1105,7 +1141,9 @@ const KEY_BOOKINGS = "delimaEmasBookings"; // [...]
 const KEY_OUTSTANDING = "delimaEmasOutstanding"; // {amount, asOf}
 const KEY_VISITOR_PASSES = "delimaEmasVisitorPasses"; // [...]
 const KEY_ORGCHART = "delimaEmasOrgChart"; // {roleKey: {name, photo}}
-const MAX_PHOTO_BYTES = 1 * 1024 * 1024; // 1 MB per org chart photo
+const KEY_TRAFFIC = "delimaEmasTraffic"; // [isoTimestamp, isoTimestamp, ...] — visit log, capped at MAX_TRAFFIC_ENTRIES
+const MAX_TRAFFIC_ENTRIES = 5000;
+const MAX_PHOTO_BYTES = 5 * 1024 * 1024; // 5 MB per org chart photo (uploaded to GitHub, not stored in JSONBin)
 
 const ORG_ROLES = [
   { key: 'chairman', label: 'Chairman', labelMs: 'Pengerusi' },
@@ -1385,6 +1423,8 @@ function getVisitorPasses() { return cloudGet(KEY_VISITOR_PASSES, []); }
 function saveVisitorPasses(p) { return cloudSet(KEY_VISITOR_PASSES, p, 'Could not save visitor pass to cloud.'); }
 function getOrgChart() { return cloudGet(KEY_ORGCHART, {}); }
 function saveOrgChartData(o) { return cloudSet(KEY_ORGCHART, o, 'Could not save organization chart to cloud.'); }
+function getTraffic() { return cloudGet(KEY_TRAFFIC, []); }
+function saveTrafficData(t) { return cloudSet(KEY_TRAFFIC, t, 'Could not save traffic data to cloud.'); }
 
 /* "Mine" pointers stay local per-device — just so each browser can highlight which
    shared records it created. The records themselves now live in the cloud. */
@@ -1607,33 +1647,45 @@ async function renderOrgAdminList() {
           <label>${escapeHtml(role.label)} <span class="en">${escapeHtml(role.labelMs)}</span></label>
           <input type="text" id="orgName-${role.key}" placeholder="Nama / Name" value="${escapeHtml(entry.name || '')}">
           <input type="file" id="orgPhoto-${role.key}" accept=".jpg,.jpeg,.png" onchange="previewOrgPhoto('${role.key}')">
-          <div class="field-error" id="err-orgPhoto-${role.key}">Photo too large. Please choose an image under 1 MB.</div>
+          <div class="hint">Max 5 MB. Uploaded directly to GitHub — requires GitHub File Uploads to be connected first (Admin → Cloud Setup).</div>
+          <div class="field-error" id="err-orgPhoto-${role.key}">Photo too large (max 5 MB), or GitHub File Uploads isn't connected yet — go to Admin → Cloud Setup.</div>
         </div>
       </div>`;
   }).join('');
 }
 
-function previewOrgPhoto(roleKey) {
+async function previewOrgPhoto(roleKey) {
   const input = document.getElementById('orgPhoto-' + roleKey);
   const errEl = document.getElementById('err-orgPhoto-' + roleKey);
+  const preview = document.getElementById('orgPhotoPreview-' + roleKey);
   errEl.style.display = 'none';
   if (!input.files || !input.files[0]) return;
   const file = input.files[0];
+
   if (file.size > MAX_PHOTO_BYTES) {
     errEl.style.display = 'block';
     input.value = '';
     return;
   }
-  const reader = new FileReader();
-  reader.onload = function(e) {
-    const preview = document.getElementById('orgPhotoPreview-' + roleKey);
-    preview.innerHTML = `<img src="${e.target.result}" alt="">`;
-    preview.dataset.newPhoto = e.target.result;
-  };
-  reader.onerror = function() {
-    showToast('Could not read photo. Try again or choose a different file.');
-  };
-  reader.readAsDataURL(file);
+  if (!isGithubConfigured()) {
+    errEl.style.display = 'block';
+    input.value = '';
+    return;
+  }
+
+  const originalContent = preview.innerHTML;
+  preview.innerHTML = '⏳';
+  try {
+    const url = await uploadFileToGithub(file);
+    preview.innerHTML = `<img src="${url}" alt="">`;
+    preview.dataset.newPhoto = url;
+    showToast('Photo uploaded. Click "Save All" below to apply it.');
+  } catch (e) {
+    console.error('Org photo upload error:', e);
+    preview.innerHTML = originalContent;
+    showToast('Could not upload photo: ' + (e && e.message ? e.message : 'unknown error'));
+  }
+  input.value = '';
 }
 
 async function saveOrgChart() {
@@ -2077,7 +2129,8 @@ async function checkLogin() {
       renderManageList(),
       renderAdminBookings(),
       renderPages(),
-      renderOrgAdminList()
+      renderOrgAdminList(),
+      renderTrafficMonitor()
     ]);
     setSyncStatus('done');
   }
@@ -2373,7 +2426,144 @@ function disconnectGithub() {
   showToast('Disconnected GitHub file uploads.');
 }
 
+/* ---------- Traffic Monitor ---------- */
+async function recordVisit() {
+  // Avoid double-counting if the same browser tab reloads/re-renders quickly.
+  try {
+    const lastRecorded = sessionStorage.getItem('delimaLastVisitRecorded');
+    const now = Date.now();
+    if (lastRecorded && (now - parseInt(lastRecorded, 10)) < 60000) return; // same session, within 1 min
+    sessionStorage.setItem('delimaLastVisitRecorded', String(now));
+  } catch (e) { /* sessionStorage unavailable, just continue */ }
+
+  // Traffic logging requires write access (the JSONBin Master Key), same as any other save.
+  // Ordinary residents browsing the public site won't have this, so in practice this counts
+  // visits made from devices that have connected with the Master Key (e.g. the admin's own
+  // visits, or anyone you've shared write access with) — not every resident's visit.
+  if (!isCloudWritable()) return;
+
+  try {
+    const traffic = await getTraffic();
+    traffic.push(new Date().toISOString());
+    if (traffic.length > MAX_TRAFFIC_ENTRIES) {
+      traffic.splice(0, traffic.length - MAX_TRAFFIC_ENTRIES);
+    }
+    const all = await jsonbinFetchAll(true);
+    all[KEY_TRAFFIC] = traffic;
+    await jsonbinSaveAll(all);
+  } catch (e) {
+    // Silently ignore — traffic logging should never disrupt the visitor's experience.
+  }
+}
+
+function bucketizeTraffic(timestamps, granularity) {
+  const buckets = {};
+  timestamps.forEach(ts => {
+    const d = new Date(ts);
+    if (isNaN(d.getTime())) return;
+    let key;
+    if (granularity === 'hourly') {
+      key = d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0') + ' ' + String(d.getHours()).padStart(2,'0') + ':00';
+    } else if (granularity === 'daily') {
+      key = d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+    } else if (granularity === 'weekly') {
+      // ISO week: Monday-start week, labeled by that Monday's date
+      const day = (d.getDay() + 6) % 7; // 0 = Monday
+      const monday = new Date(d);
+      monday.setDate(d.getDate() - day);
+      key = monday.getFullYear() + '-' + String(monday.getMonth()+1).padStart(2,'0') + '-' + String(monday.getDate()).padStart(2,'0');
+    } else { // yearly
+      key = String(d.getFullYear());
+    }
+    buckets[key] = (buckets[key] || 0) + 1;
+  });
+  return buckets;
+}
+
+function rangeFilterTimestamps(timestamps, granularity) {
+  const now = new Date();
+  const cutoff = new Date(now);
+  if (granularity === 'hourly') {
+    cutoff.setHours(now.getHours() - 24); // last 24 hours
+  } else if (granularity === 'daily') {
+    cutoff.setDate(now.getDate() - 30); // last 30 days
+  } else if (granularity === 'weekly') {
+    cutoff.setDate(now.getDate() - 7 * 12); // last 12 weeks
+  } else { // yearly
+    cutoff.setFullYear(now.getFullYear() - 5); // last 5 years
+  }
+  return timestamps.filter(ts => {
+    const d = new Date(ts);
+    return !isNaN(d.getTime()) && d >= cutoff && d <= now;
+  });
+}
+
+let currentTrafficGranularity = 'daily';
+
+async function renderTrafficMonitor() {
+  const container = document.getElementById('trafficMonitorContent');
+  if (!container) return;
+  container.innerHTML = '<div class="empty"><span class="seed">🌱</span>Loading…</div>';
+
+  if (!isCloudConfigured()) {
+    container.innerHTML = '<div class="empty"><span class="seed">🌱</span>Connect cloud storage first (Admin → Cloud Setup) to start tracking visits.</div>';
+    document.getElementById('trafficTotalAllTime').textContent = '—';
+    return;
+  }
+
+  const allTimestamps = await getTraffic();
+  document.getElementById('trafficTotalAllTime').textContent = allTimestamps.length.toLocaleString();
+
+  const filtered = rangeFilterTimestamps(allTimestamps, currentTrafficGranularity);
+  const buckets = bucketizeTraffic(filtered, currentTrafficGranularity);
+  const sortedKeys = Object.keys(buckets).sort();
+
+  if (sortedKeys.length === 0) {
+    container.innerHTML = '<div class="empty"><span class="seed">🌱</span>Tiada data lawatan lagi untuk tempoh ini. / No visit data yet for this period.</div>';
+    return;
+  }
+
+  const maxCount = Math.max(...sortedKeys.map(k => buckets[k]));
+  container.innerHTML = `
+    <div class="traffic-bars">
+      ${sortedKeys.map(key => {
+        const count = buckets[key];
+        const pct = maxCount > 0 ? Math.round((count / maxCount) * 100) : 0;
+        const label = formatTrafficLabel(key, currentTrafficGranularity);
+        return `
+          <div class="traffic-bar-row">
+            <div class="traffic-bar-label">${escapeHtml(label)}</div>
+            <div class="traffic-bar-track">
+              <div class="traffic-bar-fill" style="width:${pct}%;"></div>
+            </div>
+            <div class="traffic-bar-count">${count}</div>
+          </div>`;
+      }).join('')}
+    </div>`;
+}
+
+function formatTrafficLabel(key, granularity) {
+  if (granularity === 'hourly') {
+    const [datePart, timePart] = key.split(' ');
+    return formatDate(datePart) + ' ' + timePart;
+  }
+  if (granularity === 'daily' || granularity === 'weekly') {
+    return formatDate(key);
+  }
+  return key; // yearly: already just the year
+}
+
+document.querySelectorAll('.sub-tab-btn[data-traffic]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.sub-tab-btn[data-traffic]').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentTrafficGranularity = btn.dataset.traffic;
+    renderTrafficMonitor();
+  });
+});
+
 /* ---------- Init ---------- */
+recordVisit();
 renderAllPublic();
 checkLogin();
 </script>
