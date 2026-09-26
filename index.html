@@ -241,6 +241,94 @@
   }
   .rules-list li .en { display: block; color: var(--muted); font-size: 12px; margin-top: 2px; }
 
+  /* ============================================================
+     HOUSE RULES — SEARCH BAR, TABLE OF CONTENTS & FULL TEXT
+     (Added to integrate the complete Residents' House Rules &
+     Regulations handbook. See the #houserules section below.)
+     ============================================================ */
+  .hr-search-wrap {
+    background: rgba(255,255,255,0.97);
+    border: 1px solid #e8e0c8; border-radius: 8px;
+    padding: 12px 14px; margin: 14px 0 16px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  }
+  .hr-search-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .hr-search-row input[type="search"] {
+    flex: 1 1 200px; padding: 10px 12px; border: 1px solid #ccc; border-radius: 6px;
+    font-size: 14px; font-family: inherit; background: white; color: var(--ink);
+  }
+  .hr-search-row input[type="search"]:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
+  .hr-search-row button {
+    padding: 10px 16px; border: none; border-radius: 6px; font-size: 13px; font-weight: 600;
+    cursor: pointer; font-family: inherit; white-space: nowrap;
+  }
+  .hr-search-btn { background: var(--navy); color: white; }
+  .hr-search-btn:hover { background: var(--navy-deep); }
+  .hr-clear-btn { background: #eee; color: #333; }
+  .hr-clear-btn:hover { background: #ddd; }
+  .hr-search-info { font-size: 12px; color: var(--muted); margin-top: 8px; min-height: 16px; }
+  .hr-search-info strong { color: var(--navy); }
+  .hr-no-results { display: none; text-align: center; padding: 26px 10px; color: var(--muted); font-size: 14px; }
+  .hr-no-results .seed { font-size: 22px; display: block; margin-bottom: 6px; opacity: 0.6; }
+  mark.hr-mark { background: var(--gold-soft); color: var(--navy-deep); padding: 0 2px; border-radius: 2px; }
+
+  .hr-toc {
+    background: #faf8f2; border: 1px solid #e8e0c8; border-radius: 8px;
+    padding: 14px 16px; margin-bottom: 18px;
+  }
+  .hr-toc h3 { font-size: 14px; color: var(--navy); margin-bottom: 8px; }
+  .hr-toc ol { list-style: none; padding-left: 0; margin: 0; }
+  .hr-toc > ol > li { margin-bottom: 2px; break-inside: avoid; }
+  .hr-toc a {
+    display: block; font-size: 13px; color: var(--navy); text-decoration: none;
+    padding: 5px 8px; border-radius: 5px; transition: background 0.15s;
+  }
+  .hr-toc a:hover, .hr-toc a:focus-visible { background: var(--gold-soft); }
+  .hr-toc-sub { padding-left: 16px; margin-top: 2px; }
+  .hr-toc-sub a { padding: 4px 8px; font-size: 12.5px; color: #444; }
+  @media (min-width: 640px) {
+    .hr-toc > ol { columns: 2; column-gap: 18px; }
+  }
+
+  .hr-doc { margin-top: 6px; }
+  .hr-section { padding: 16px 0; border-top: 1px solid #eee; scroll-margin-top: 20px; }
+  .hr-section:first-of-type { border-top: none; padding-top: 4px; }
+  .hr-section-title {
+    font-size: 16px; color: var(--navy); font-weight: 700; margin-bottom: 10px;
+    padding-bottom: 6px; border-bottom: 2px solid var(--gold); display: inline-block;
+  }
+  .hr-section-sub { padding-top: 10px; padding-bottom: 10px; }
+  .hr-section-sub .hr-section-title { font-size: 14.5px; border-bottom-color: var(--leaf); }
+  .hr-unit { margin: 0 0 14px; scroll-margin-top: 20px; }
+  .hr-unit:last-child { margin-bottom: 0; }
+  .hr-rule-title { font-size: 14px; color: var(--navy); font-weight: 700; margin-bottom: 3px; }
+  .hr-doc p { font-size: 13.5px; line-height: 1.65; margin: 6px 0; color: var(--ink); }
+  .hr-doc > p:first-child, .hr-unit p:first-child { margin-top: 0; }
+  .hr-doc ol, .hr-doc ul { margin: 6px 0 6px 22px; font-size: 13.5px; line-height: 1.65; }
+  .hr-doc ol li, .hr-doc ul li { margin-bottom: 6px; }
+  .hr-doc ol.hr-roman { list-style: lower-roman; }
+  .hr-doc ol.hr-alpha { list-style: lower-alpha; }
+  .hr-doc ul.hr-sub-list { margin-top: 4px; font-size: 13px; }
+  .hr-notice {
+    background: #fff3cd; border: 1px solid #ffc107; border-radius: 6px;
+    padding: 10px 12px; font-size: 13px; margin: 10px 0; font-weight: 600; color: #6b5100;
+  }
+  .hr-warning {
+    background: #fdecea; border: 1px solid #f5c2c0; border-radius: 6px;
+    padding: 10px 12px; font-size: 13px; margin: 10px 0; font-weight: 700; color: #c62828;
+  }
+  .hr-charges-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 8px 0; }
+  .hr-charges-table th, .hr-charges-table td { border: 1px solid #ddd; padding: 6px 10px; text-align: left; }
+  .hr-charges-table th { background: #f5f5f5; }
+  .hr-addendum-badge {
+    display: inline-block; font-size: 10.5px; font-weight: 700; color: var(--leaf);
+    background: #f3ecd6; padding: 2px 7px; border-radius: 8px; margin-left: 8px; vertical-align: middle;
+  }
+  @media (max-width: 480px) {
+    .hr-section-title { font-size: 14.5px; }
+    .hr-search-row button { flex: 1 1 auto; }
+  }
+
   .outstanding-box {
     text-align: center; padding: 8px 0;
   }
@@ -397,265 +485,532 @@
   <div id="houserules" class="section">
     <div class="card">
       <h2>📜 House Rules &amp; Regulations <span class="en">Peraturan Rumah</span></h2>
-      <p style="font-size:12px;color:var(--muted);margin-top:4px;">Ringkasan dari buku panduan rasmi dan pekeliling pengurusan. / Summary from the official handbook and management circulars.</p>
+      <p style="font-size:12px;color:var(--muted);margin-top:4px;">Delima Emas Condominium — Residents' House Rules &amp; Regulations (House Rules - Revision 1), in full, plus recent Management/AGM circulars. Use the search box or the Table of Contents below to jump straight to what you need.</p>
 
-      <div class="sub-tabs" style="margin-top:14px;">
-        <button class="sub-tab-btn active" data-hr="hr-general">General Rules</button>
-        <button class="sub-tab-btn" data-hr="hr-facilities">Facilities</button>
-        <button class="sub-tab-btn" data-hr="hr-renovation">Renovation</button>
-        <button class="sub-tab-btn" data-hr="hr-parking">Parking</button>
-        <button class="sub-tab-btn" data-hr="hr-fire">Fire &amp; Safety</button>
-        <button class="sub-tab-btn" data-hr="hr-bylaws">Bylaw Updates</button>
-        <button class="sub-tab-btn" data-hr="hr-rubbish">Rubbish Disposal</button>
-        <button class="sub-tab-btn" data-hr="hr-tenancy">Tenancy Rules</button>
-      </div>
-
-      <!-- General Rules -->
-      <div id="hr-general" class="hr-sub" style="display:block;">
-        <h3 style="font-size:15px;color:var(--navy);margin:14px 0 6px;">3.0 General Rules</h3>
-        <ul class="rules-list">
-          <li><strong>3.01 Unlawful use, nuisance</strong> — Units are for private residential use only; no business activity is allowed.</li>
-          <li><strong>3.02 Lease of the parcel</strong> — Owners must notify Management if their unit is leased out.</li>
-          <li><strong>3.03 Lifts</strong> — Smoking in lifts is strictly prohibited. Only the service lift may be used for bulky items or moving in/out.</li>
-          <li><strong>3.04 Auctions &amp; garage sales</strong> — Not allowed without prior written consent from Management.</li>
-          <li><strong>3.05 Explosives, petroleum &amp; flammables</strong> — Not permitted to be kept, stored, or used in any unit.</li>
-          <li><strong>3.06 Insurance</strong> — Building insurance covers only the structure and common areas. Residents must insure their own household contents.</li>
-          <li><strong>3.07 Blocking of sink pipes</strong> — No rags, oil, grease or other substances may be placed in sinks, baths, or pipes.</li>
-          <li><strong>3.08 Decoration of exterior</strong> — No exterior decoration (including plants) without Management's prior written consent.</li>
-          <li><strong>3.09 Advertisements</strong> — No notices, posters, signboards, or visible articles on windows/exterior without consent.</li>
-          <li><strong>3.10 External aerials &amp; alterations</strong> — No antennas, satellite dishes, or alterations to external walls.</li>
-          <li><strong>3.11 Pets</strong> — No pets allowed in any unit, common property, or the building.</li>
-          <li><strong>3.12 Electrical apparatus &amp; machinery</strong> — No machinery/electrical apparatus may be installed without written approval (normal domestic appliances excepted).</li>
-          <li><strong>3.13 Electrical points</strong> — No extra electrical points without written approval.</li>
-          <li><strong>3.14 Obstruction</strong> — No furniture, boxes, or goods left in entrances, staircases, corridors, lifts, or fire escapes.</li>
-          <li><strong>3.15 Annoyances</strong> — No act causing nuisance, annoyance, or injury to other occupants.</li>
-          <li><strong>3.16 Obstruction to access</strong> — No vehicles parked in a way that obstructs roads or passageways.</li>
-          <li><strong>3.17 Rubbish</strong> — Nothing thrown from windows/doors. Rubbish must be secured in non-porous bags and placed in proper bins. Flammable substances must not go in trash bins.</li>
-          <li><strong>3.18 Burglar alarms</strong> — No burglar alarms or security systems without prior written approval.</li>
-          <li><strong>3.19 Floor loading</strong> — Nothing that may overload or impair floors, walls, or roof.</li>
-          <li><strong>3.20 Plants</strong> — Plants must be kept within the unit and not create nuisance to others.</li>
-          <li><strong>3.21 Common area items</strong> — No altering, shifting, or removing furniture, landscaping, or other items in common areas.</li>
-          <li><strong>3.22 Firefighting equipment</strong> — No tampering with firefighting equipment, security systems, or common facilities.</li>
-          <li><strong>3.23 Religious/political activities</strong> — Not allowed in common property.</li>
-          <li><strong>3.24 Letters/parcels</strong> — Received at the occupant's own risk.</li>
-          <li><strong>3.25 Interference with common property</strong> — No interference with air-conditioning, ventilation, lighting, or security systems.</li>
-          <li><strong>3.26 Hanging of clothes</strong> — No hanging clothes, towels, or linen outside the unit or on the building.</li>
-        </ul>
-      </div>
-
-      <!-- Facilities -->
-      <div id="hr-facilities" class="hr-sub" style="display:none;">
-        <h3 style="font-size:15px;color:var(--navy);margin:14px 0 6px;">4.03 Swimming Pool</h3>
-        <ul class="rules-list">
-          <li>No lifeguard on duty — swim at your own risk. Open daily 8:00 AM – 10:00 PM.</li>
-          <li>Shower before entering. No one with open wounds/bandages/infectious diseases. No spitting, spouting, or nose-blowing in the pool.</li>
-          <li>Dry off before leaving the pool area; no wet swimwear beyond the pool.</li>
-          <li>No coaching/lessons without Management's written consent.</li>
-          <li>No surfboards, snorkeling/scuba gear, glass items, boats. Plastic goggles and small water toys for children are allowed.</li>
-          <li>No noisy, rough, or dangerous play. Strictly no diving.</li>
-          <li>No pets, no food, near the pool.</li>
-          <li>Pool equipment, filters, and life buoys are for emergencies only — do not tamper or remove.</li>
-          <li>Children under 12 must be accompanied by an adult at all times.</li>
-          <li>No glassware or sharp/breakable objects. Proper swimming attire required.</li>
-          <li>No footwear, food or drinks within 2 metres of the pool edge.</li>
-          <li>Leave the pool during rain/thunderstorms.</li>
-          <li>Filtration plant and pump rooms are strictly out of bounds.</li>
-          <li>No cycling, roller-skating, or skateboarding on the pool deck.</li>
-          <li>Guests must sign in and be accompanied by a resident.</li>
-          <li>Management is not liable for injury, loss, or damage from use of the pool.</li>
-        </ul>
-
-        <h3 style="font-size:15px;color:var(--navy);margin:18px 0 6px;">4.04 Gymnasium</h3>
-        <ul class="rules-list">
-          <li>Open daily 6:00 AM – 10:00 PM, unless notified otherwise.</li>
-          <li>No reservations — first come, first served.</li>
-          <li>Appropriate attire required; rubber-soled shoes only.</li>
-          <li>No smoking, drinking, or eating.</li>
-          <li>Bring your own towel.</li>
-          <li>Return equipment to its original position after use.</li>
-          <li>Children under 12 are not allowed.</li>
-          <li>No radios/TVs/electronics without special permission.</li>
-          <li>Switch off all lights, fans, and air-conditioners when you're the last to leave.</li>
-          <li>Management may deny access for unacceptable behaviour, and is not liable for injury, death, or property loss/damage.</li>
-        </ul>
-
-        <h3 style="font-size:15px;color:var(--navy);margin:18px 0 6px;">4.05 Multi-Purpose Hall</h3>
-        <ul class="rules-list">
-          <li>Reserve at the Management Office at least 1 week in advance, first come first served.</li>
-          <li>Usable 9:00 AM – 10:00 PM unless notified otherwise.</li>
-          <li>RM200 deposit payable on reservation; refunded after deduction of cleaning/damage costs. Excess damage costs are charged to the resident.</li>
-          <li>Cancellations must be notified at least 3 days in advance, or 50% of the deposit is forfeited.</li>
-          <li>Host must keep guests confined to the hall.</li>
-          <li>No radios/TVs/sound equipment without Management approval.</li>
-          <li>No activity that causes nuisance or disturbs other residents.</li>
-          <li>Management not liable for injury, death, or property loss/damage.</li>
-        </ul>
-
-        <h3 style="font-size:15px;color:var(--navy);margin:18px 0 6px;">4.06 Children's Playground</h3>
-        <ul class="rules-list">
-          <li>Usable 7:00 AM – 10:00 PM daily unless notified otherwise.</li>
-          <li>Children under 12 must be accompanied and supervised by an adult.</li>
-          <li>No smoking, food, or drink at the playground.</li>
-          <li>All litter must go in provided bins.</li>
-          <li>No horseplay or throwing objects.</li>
-          <li>Playground equipment must not be damaged, removed, or altered.</li>
-          <li>No radios/TVs/electronic sound equipment.</li>
-          <li>Management not liable for injury, death, or property loss/damage.</li>
-        </ul>
-
-        <h3 style="font-size:15px;color:var(--navy);margin:18px 0 6px;">4.07 Barbeque Area</h3>
-        <ul class="rules-list">
-          <li>Reserve at the Management Office at least 3 days in advance, first come first served.</li>
-          <li>RM50 deposit payable on reservation, to ensure the pit and stove are left clean.</li>
-        </ul>
-      </div>
-
-      <!-- Renovation -->
-      <div id="hr-renovation" class="hr-sub" style="display:none;">
-        <h3 style="font-size:15px;color:var(--navy);margin:14px 0 6px;">4.01 Alterations / Renovations</h3>
-        <p style="font-size:14px;line-height:1.6;">Without the Management's prior written consent, occupants may <strong>not</strong>:</p>
-        <ul class="rules-list">
-          <li>Start work before the Certificate of Fitness for Occupation is issued.</li>
-          <li>Add awnings, shades, screens, or grilles outside the unit.</li>
-          <li>Install security grilles in designs/colours not specified by Management.</li>
-          <li>Connect the unit to any adjoining unit.</li>
-          <li>Make internal, structural, or non-structural alterations.</li>
-          <li>Connect new pipes, electrical wiring, cables, or conduits without approved plans and statutory consent.</li>
-          <li>Make any alteration or renovation whatsoever.</li>
-        </ul>
-        <p style="font-size:14px;line-height:1.6;margin-top:10px;">If consent is granted, Management may impose conditions including:</p>
-        <ul class="rules-list">
-          <li>A renovation deposit (refunded after satisfactory completion and removal of debris; excess damage/cleaning costs are charged to the occupant).</li>
-          <li>Third-party liability insurance for the renovation period.</li>
-          <li>Submission of plans, drawings, and related documents.</li>
-          <li>Work hours: Mon–Fri 10:00 AM–5:00 PM, Sat 10:00 AM–1:00 PM, Sun &amp; public holidays — not allowed.</li>
-          <li>No storage of building materials, debris, or rubbish in common areas.</li>
-          <li>Occupant bears the cost of any damage to roads, drainage, sewerage, pipes, cables, or wires caused by renovation works.</li>
-        </ul>
-
-        <h3 style="font-size:15px;color:var(--navy);margin:18px 0 6px;">4.02 Air Conditioning Installation</h3>
-        <ul class="rules-list">
-          <li>No external/protruding A/C units without Management's prior written consent.</li>
-          <li>Compressors must be placed in the designated compressor room; connecting pipes painted to match the extension wall colour.</li>
-          <li>Units must be regularly serviced (filters, fan coils, drain pipes kept clear) to avoid noise, dripping, or blockages.</li>
-          <li>Service contractors must not splash/hose water onto compressors, which could drip onto units below.</li>
-          <li>Notify Management if a major service is required.</li>
-        </ul>
-      </div>
-
-      <!-- Parking -->
-      <div id="hr-parking" class="hr-sub" style="display:none;">
-        <h3 style="font-size:15px;color:var(--navy);margin:14px 0 6px;">7.0 Car Parking Rules &amp; Regulations</h3>
-        <p style="font-size:14px;font-weight:600;color:#c62828;margin-bottom:8px;">Vehicles are parked at owners' own risk.</p>
-        <ul class="rules-list">
-          <li><strong>7.01 Parking lots</strong> — Park only in your allocated lot.</li>
-          <li><strong>7.02 No parking in other areas</strong> — Vehicles in no-parking zones, blocking entrances/exits, or left unattended may be towed or clamped without notice. Clamp release fees: <strong>RM50</strong> (1st offence), <strong>RM100</strong> (2nd), <strong>RM200</strong> (subsequent). Motorcycles/bicycles must use designated parking only.</li>
-          <li><strong>7.03 Car wash</strong> — Not allowed in the car park.</li>
-          <li><strong>7.04 Parking lot allocation</strong> — Each unit is entitled to its allocated lot(s).</li>
-          <li><strong>7.05 Repair of vehicles</strong> — No major repairs involving oil spillage or excessive noise within the building compound.</li>
-          <li><strong>7.06 Car park access card</strong> — One access card per allocated parking bay. Lost cards must be reported in writing; replacement fee <strong>RM50</strong> per card. Vehicles without an access card will not be allowed to enter.</li>
-        </ul>
-      </div>
-
-      <!-- Fire & Safety -->
-      <div id="hr-fire" class="hr-sub" style="display:none;">
-        <h3 style="font-size:15px;color:var(--navy);margin:14px 0 6px;">6.0 Fire &amp; Emergency Evacuation Procedures</h3>
-        <p style="font-size:14px;line-height:1.6;">In the event of a fire:</p>
-        <ul class="rules-list">
-          <li>Don't panic — stay calm.</li>
-          <li>Break the fire alarm glass and contact the Security Guard Post / Management Office immediately; call <strong>999</strong> for Bomba and other rescue agencies.</li>
-          <li>Try to contain or extinguish the fire using available firefighting equipment, only if it doesn't endanger your life.</li>
-          <li>Do not use water if the fire is caused by an electrical fault.</li>
-          <li>If you can't control it, evacuate immediately after turning off the gas stove and cutting electricity. Do not collect belongings.</li>
-          <li>Do not use lifts — use the staircase.</li>
-          <li>Assist children, senior citizens, and people with disabilities during evacuation.</li>
-          <li>Report immediately to the Assembly Point; report any missing person right away.</li>
-        </ul>
-        <p style="font-size:14px;line-height:1.6;margin-top:10px;">Upon hearing the fire alarm: stop all activities, turn off gas and cut electricity, leave with all occupants, use the staircase only, assist those who need help, and report to the Assembly Point without obstructing rescue authorities. Do not return for valuables — <strong>smoke kills before fire</strong>.</p>
-      </div>
-
-      <!-- Bylaw Updates -->
-      <div id="hr-bylaws" class="hr-sub" style="display:none;">
-
-        <h3 style="font-size:15px;color:var(--navy);margin:14px 0 6px;">AGM 1 — 24 Jun 2023</h3>
-        <p style="font-size:13px;color:var(--muted);margin-bottom:6px;">Diluluskan sebulat suara pada Mesyuarat Agung Pertama Perbadanan Pengurusan Kondominium Delima Emas.</p>
-        <ul class="rules-list">
-          <li><strong>Penyewaan kepada Warga Asing</strong> — Warga asing samada pekerja professional atau bukan professional, <strong>tidak dibenarkan menyewa</strong> di Kondominium Delima Emas. <span class="en">(Foreign nationals — whether professional workers or otherwise — are not permitted to rent units here.)</span></li>
-          <li><strong>Had Penghuni</strong> — Unit yang disewa hendaklah tidak melebihi <strong>6 orang</strong> sahaja. <span class="en">(Maximum 6 occupants per unit.)</span></li>
-        </ul>
-
-        <h3 style="font-size:15px;color:var(--navy);margin:18px 0 6px;">AGM 2 — 20 Julai 2024</h3>
-        <p style="font-size:13px;color:var(--muted);margin-bottom:6px;">Diluluskan pada Mesyuarat Agung Ke Dua Perbadanan Pengurusan Kondominium Delima Emas.</p>
-        <ul class="rules-list">
-          <li><strong>Gymnasium</strong> — Denda <strong>RM100 atau 3 bulan tidak dibenarkan menggunakan bilik gym</strong> bagi pengguna yang tidak mematuhi peraturan gym (tertera di pintu masuk), vandalism dan sebagainya. <span class="en">(Fine RM100 or 3-month gym ban for violating gym rules, vandalism, etc.)</span></li>
-          <li><strong>Parking Lot</strong> — Denda <strong>RM50</strong> sekiranya kenderaan anda dikunci kerana meletak kenderaan di lot parking kepunyaan unit lain. <span class="en">(RM50 fine for parking in another unit's allocated lot.)</span></li>
-          <li><strong>Parking Lot (Motosikal/Kereta)</strong> — Denda <strong>RM50</strong> sekiranya kenderaan anda dikunci kerana meletakkan motosikal/kereta di tempat yang bukan di kawasan yang telah ditetapkan dan disediakan oleh pihak Pengurusan. <span class="en">(RM50 fine for parking motorcycle/car outside designated areas.)</span></li>
-          <li><strong>Parking Visitor (Bermalam)</strong> — Kemudahan tempat kereta bagi pelawat bermalam hanya dibenarkan selama <strong>3 hari sahaja</strong>. Bagi hari seterusnya akan dikenakan bayaran <strong>RM10 semalam</strong>. <span class="en">(Overnight visitor parking limited to 3 nights; RM10/night thereafter.)</span></li>
-          <li><strong>Bilik Sampah</strong> — Denda <strong>RM100</strong> bagi unit yang membuang sampah sesuka hati tanpa mematuhi notis yang ditampal pada bilik sampah. <span class="en">(RM100 fine for improper waste disposal ignoring posted notices.)</span></li>
-          <li><strong>Lift</strong> — Denda <strong>RM100</strong> bagi unit yang memberhentikan lift secara manual tanpa menggunakan kad akses, melakukan vandalism dengan sengaja. Sekiranya berlaku kerosakan lift, pengguna yang terlibat akan menanggung kos kerosakan tersebut. <span class="en">(RM100 fine for manually stopping lift without access card or vandalism; user bears repair costs if lift is damaged.)</span></li>
-        </ul>
-
-        <h3 style="font-size:15px;color:var(--navy);margin:18px 0 6px;">AGM — 27 September 2025</h3>
-        <p style="font-size:13px;color:var(--muted);margin-bottom:6px;">Diluluskan sebulat suara pada Mesyuarat Agung MC 27 September 2025.</p>
-        <ul class="rules-list">
-          <li><strong>Invisible Grille di Balkoni</strong> — Dibenarkan, dengan spesifikasi: stainless steel cable Teflon-coated 2.0mm (SS316), jarak antara kabel 2.0 inci, dipasang penuh, lurus, di luar railing. <span class="en">(Balcony invisible grilles permitted — SS316 Teflon-coated cable 2.0mm, 2.0-inch gap, fully installed outside railing.)</span></li>
-          <li><strong>Bidai Kayu (Bamboo Roller Blinds)</strong> — Dibenarkan, jenis kayu berwarna coklat gelap sahaja. <span class="en">(Bamboo roller blinds permitted — dark brown wood colour only.)</span></li>
-        </ul>
-      </div>
-
-      <!-- Rubbish Disposal -->
-      <div id="hr-rubbish" class="hr-sub" style="display:none;">
-        <h3 style="font-size:15px;color:var(--navy);margin:14px 0 6px;">Etika Pembuangan Sampah: Tanggungjawab Kita Bersama</h3>
-
-        <p style="font-size:14px;font-weight:600;color:#2e7d32;margin-top:6px;">✅ Dibenarkan / Allowed</p>
-        <ul class="rules-list">
-          <li>Sisa basah / bekas pembungkus makanan — pastikan sampah diikat dengan kemas sebelum dibuang ke dalam tong sampah. <span class="en">(Wet waste / food packaging — must be tied securely before disposal in the bin.)</span></li>
-        </ul>
-
-        <p style="font-size:14px;font-weight:600;color:#c62828;margin-top:12px;">❌ Tidak Dibenarkan / Not Allowed</p>
-        <ul class="rules-list">
-          <li>(1) Kotak <span class="en">(boxes)</span></li>
-          <li>(2) Botol kaca / plastik <span class="en">(glass / plastic bottles)</span></li>
-          <li>(3) Tilam @ bantal <span class="en">(mattresses / pillows)</span></li>
-          <li>(4) Sisa e-waste <span class="en">(e-waste)</span></li>
-          <li>(5) Barang terpakai <span class="en">(used items)</span></li>
-          <li>(6) Perabot lama &amp; rosak <span class="en">(old / broken furniture)</span></li>
-        </ul>
-
-        <h3 style="font-size:15px;color:var(--navy);margin:18px 0 6px;">Kawasan Tempat Pembuangan</h3>
-        <ul class="rules-list">
-          <li>Kawasan pembuangan di bangunan parking kereta (ground floor) adalah <strong>untuk item (1) dan (2) sahaja</strong> — kotak dan botol kaca/plastik, diletakkan di kawasan kitar semula yang disediakan.</li>
-          <li><strong>Item (3), (4), (5) dan (6) WAJIB dilupuskan sendiri di luar kawasan kondominium.</strong></li>
-        </ul>
-        <p style="font-size:14px;font-weight:700;color:#c62828;margin-top:10px;">⚠️ Kegagalan mematuhi peraturan akan didenda minimum RM100.00 dan maksimum RM300.00.</p>
-      </div>
-
-      <!-- Tenancy Rules -->
-      <div id="hr-tenancy" class="hr-sub" style="display:none;">
-        <h3 style="font-size:15px;color:var(--navy);margin:14px 0 6px;">Peraturan Penyewaan <span class="en">Tenancy Rules</span></h3>
-
-        <div style="background:#fff3cd;border:1px solid #ffc107;border-radius:6px;padding:10px 12px;font-size:13px;margin-bottom:12px;">
-          ⚠️ <strong>Pindaan AGM 24 Jun 2023:</strong> Warga asing samada pekerja professional atau bukan professional, <strong>tidak dibenarkan menyewa</strong> di Kondominium Delima Emas. <span style="color:var(--muted);">(As of AGM Jun 2023, foreign nationals — professional or otherwise — are no longer permitted to rent units here.)</span>
+      <!-- ============================================================
+           HOUSE RULES SEARCH (added) — vanilla JS, client-side only.
+           Searches every rule on this page as you type, highlights
+           matches, shows a result count, and supports Enter + Clear.
+           See performHRSearch() / clearHRSearch() in the script below.
+           ============================================================ -->
+      <div class="hr-search-wrap">
+        <div class="hr-search-row">
+          <input type="search" id="hrSearchInput" placeholder="Search House Rules… e.g. parking, pets, swimming pool, RM50" aria-label="Search House Rules">
+          <button type="button" class="hr-search-btn" id="hrSearchBtn">🔍 Search</button>
+          <button type="button" class="hr-clear-btn" id="hrClearBtn">✕ Clear</button>
         </div>
-
-        <h3 style="font-size:14px;color:var(--navy);margin:14px 0 6px;">Had Penghuni / Occupancy Limit</h3>
-        <ul class="rules-list">
-          <li>Unit yang disewa hendaklah tidak melebihi <strong>6 orang</strong> sahaja. <span class="en">(Maximum 6 occupants per rented unit.)</span></li>
-        </ul>
-
-        <h3 style="font-size:14px;color:var(--navy);margin:14px 0 6px;">Pematuhan Undang-Undang Kecil Tambahan (AGM Sep 2025)</h3>
-        <p style="font-size:13px;color:var(--muted);margin-bottom:6px;">Berkuat kuasa serta merta dan wajib dipatuhi oleh semua pemilik unit.</p>
-        <ul class="rules-list">
-          <li><strong>1) Pendaftaran penyewa</strong> — Pemilik wajib mendaftarkan penyewa warga asing profesional dengan Pejabat Pengurusan sebelum penyewa menduduki unit.</li>
-          <li><strong>2) Dokumen sokongan</strong> — Salinan pasport &amp; visa yang sah, serta salinan kontrak perjanjian penyewaan, perlu dikemukakan kepada pengurusan.</li>
-          <li><strong>3) Tanggungjawab pemilik</strong> — Memastikan penyewa berkelakuan baik dan tidak menimbulkan gangguan di kondominium.</li>
-          <li><strong>4) Had maksimum penyewa</strong> — 6 orang bagi setiap unit.</li>
-          <li><strong>5) Tindakan penguatkuasaan</strong> — Pengurusan boleh mengenakan denda dan/atau melaporkan kepada pemilik atau agensi kerja sekiranya berlaku pelanggaran.</li>
-          <li><strong>6) Pengusiran penyewa</strong> — Penyewa yang gagal mematuhi Undang-Undang Kecil atau House Rules boleh diarahkan keluar oleh MC, selaras dengan Strata Management Act 2013.</li>
-        </ul>
+        <div class="hr-search-info" id="hrSearchInfo" aria-live="polite"></div>
       </div>
 
-      <p style="font-size:11px;color:var(--muted);margin-top:18px;">This page summarises the Residents' House Rules &amp; Regulations handbook and recent management circulars (AGM Jun 2023, Jul 2024, Sep 2025). For the full legal text, please refer to the official documents at the Management Office.</p>
+      <div class="hr-no-results" id="hrNoResults">
+        <span class="seed">🔍</span>
+        No matching rules found. Try a different word, e.g. "parking", "pets" or "renovation".
+      </div>
+
+      <!-- ============================================================
+           TABLE OF CONTENTS (added) — click to smooth-scroll to a
+           section. Handled by the .hr-toc a click listener below.
+           ============================================================ -->
+      <nav class="hr-toc" id="hrToc" aria-label="House Rules Table of Contents">
+        <h3>📑 Table of Contents</h3>
+        <ol>
+          <li><a href="#hrsec-1-0">1.0 Introduction</a></li>
+          <li><a href="#hrsec-2-0">2.0 Interpretation</a></li>
+          <li><a href="#hrsec-3-0">3.0 General Rules</a></li>
+          <li>
+            <a href="#hrsec-4-0">4.0 Specific Rules</a>
+            <ol class="hr-toc-sub">
+              <li><a href="#hrsec-4-01">4.01 Alterations / Renovations</a></li>
+              <li><a href="#hrsec-4-02">4.02 Air Conditioning Installation</a></li>
+              <li><a href="#hrsec-4-03">4.03 Swimming Pool</a></li>
+              <li><a href="#hrsec-4-04">4.04 Gymnasium</a></li>
+              <li><a href="#hrsec-4-05">4.05 Multi-Purpose Hall</a></li>
+              <li><a href="#hrsec-4-06">4.06 Children's Playground</a></li>
+              <li><a href="#hrsec-4-07">4.07 BBQ Area</a></li>
+            </ol>
+          </li>
+          <li><a href="#hrsec-5-0">5.0 Building By-Laws</a></li>
+          <li><a href="#hrsec-6-0">6.0 Fire &amp; Emergency Evacuation Procedures</a></li>
+          <li><a href="#hrsec-7-0">7.0 Car Parking Rules &amp; Regulations</a></li>
+          <li><a href="#hrsec-8-0">8.0 Miscellaneous</a></li>
+          <li>
+            <a href="#hrsec-9-0">Addendum: Management Circulars &amp; AGM Updates</a>
+            <ol class="hr-toc-sub">
+              <li><a href="#hrsec-9-01">AGM Bylaw Updates (2023–2025)</a></li>
+              <li><a href="#hrsec-9-02">Rubbish Disposal Guidelines</a></li>
+              <li><a href="#hrsec-9-03">Tenancy Rules</a></li>
+            </ol>
+          </li>
+        </ol>
+      </nav>
+
+      <!-- ============================================================
+           FULL HOUSE RULES TEXT (added) — every .hr-section below is
+           a Table-of-Contents target; every .hr-unit is one
+           searchable/filterable rule or clause. Wording, numbering,
+           amounts and times are kept exactly as in the official
+           handbook — do not paraphrase when editing.
+           ============================================================ -->
+      <div class="hr-doc" id="hrDoc">
+
+        <!-- 1.0 INTRODUCTION -->
+        <section class="hr-section" id="hrsec-1-0">
+          <h3 class="hr-section-title">1.0 Introduction</h3>
+          <div class="hr-unit">
+            <p><em>Welcome to Delima Emas Condominium</em></p>
+            <p>We are pleased to present to you this handbook, which not only contains important information about your condominium and the facilities provided at this residence, but also is an important guide towards a harmonious living.</p>
+            <p>This handbook has been compiled and will be revised where and when necessary by the Management Company.</p>
+            <p>Owners/Residents are urged to read and understand, support as well as adhere to the rules and regulations of this handbook.</p>
+            <p>The Developer and the Management would like to thank you for choosing Delima Emas Condominium as your residence.</p>
+            <p><strong>E W &amp; ASSOCIATES SDN BHD [198617-W]</strong></p>
+          </div>
+        </section>
+
+        <!-- 2.0 INTERPRETATION -->
+        <section class="hr-section" id="hrsec-2-0">
+          <h3 class="hr-section-title">2.0 Interpretation</h3>
+          <p>In this handbook of House Rules and Regulations, several words have reserved or enhanced meanings as follows:</p>
+          <div class="hr-unit"><p><strong>"Building"</strong> means building and ground collectively known as Delima Emas Condominium.</p></div>
+          <div class="hr-unit"><p><strong>"Building By-Laws"</strong> means the provisions of the Strata Management Act 2013 (Act 757) &amp; Regulations including any other laws currently in operation affecting the Parcel in relation to the maintenance and management of the Building and common property.</p></div>
+          <div class="hr-unit"><p><strong>"Parcel"</strong> means the individual units comprised in the sub-divided buildings, which is to be held under a separate strata title.</p></div>
+          <div class="hr-unit"><p><strong>"Common property"</strong> means all facilities or parts of the building not comprised in any parcel including accessory parcel commonly enjoyed by all residents.</p></div>
+          <div class="hr-unit"><p><strong>"Owner"</strong> means the person or persons who own one of the parcels in the building.</p></div>
+          <div class="hr-unit"><p><strong>"Lessee"</strong> means all and any person occupying the Parcel pursuant to a license, lease, tenancy or any other agreement with the Purchaser for the parting with possession by the Purchaser of the Parcel in any manner whatsoever.</p></div>
+          <div class="hr-unit"><p><strong>"Guest"</strong> means a person other than a resident who is on the Parcel at the invitation of a Purchaser or its Lessee.</p></div>
+          <div class="hr-unit"><p><strong>"Occupant"</strong> means person occupying the Parcel including the Purchaser or the Lessee.</p></div>
+          <div class="hr-unit"><p><strong>"Developer"</strong> means E.W. &amp; ASSOCIATES SDN BHD [198617-W]</p></div>
+          <div class="hr-unit"><p><strong>"Management"</strong> means any company, its servants, agents or other person or persons duly authorized by E W &amp; Associates Sdn Bhd to manage the Project.</p></div>
+          <div class="hr-unit"><p><strong>"Management office"</strong> means the Management Company's office located in the building.</p></div>
+          <div class="hr-unit"><p><strong>"House Rules"</strong> means the rules and regulations governing the actions and conduct of persons in the condominium and details and procedures that must be followed by persons in the condominium.</p></div>
+        </section>
+
+        <!-- 3.0 GENERAL RULES -->
+        <section class="hr-section" id="hrsec-3-0">
+          <h3 class="hr-section-title">3.0 General Rules</h3>
+
+          <div class="hr-unit"><p class="hr-rule-title">3.01 Unlawful use, nuisance</p><p>The said Parcel shall be exclusively used for private residential only. Owner/Lessee shall not use the said Parcel or any part thereof for any business whatsoever.</p></div>
+
+          <div class="hr-unit"><p class="hr-rule-title">3.02 Lease of the parcel</p><p>Owners must notify the Management should their parcel be leased out.</p></div>
+
+          <div class="hr-unit"><p class="hr-rule-title">3.03 Lifts</p><p>Smoking in the lifts is strictly prohibited. Only service lift can be used for transporting bulky items and moving in/out.</p></div>
+
+          <div class="hr-unit"><p class="hr-rule-title">3.04 Auctions and garage sale</p><p>No garage sale or auction shall be conducted in the Parcel or any of the Common Property without the prior written consent of the management and/or its agent.</p></div>
+
+          <div class="hr-unit"><p class="hr-rule-title">3.05 Explosives, petroleum and inflammable products</p><p>The Occupant shall not cause or permit any explosives of any nature or petroleum or other combustible or inflammable products to be kept, stored or used in the Parcel.</p></div>
+
+          <div class="hr-unit">
+            <p class="hr-rule-title">3.06 Insurance</p>
+            <ol class="hr-roman">
+              <li>The Occupant shall not do anything that will cause an increase in the insurance premium rates or the cancellation, invalidation or non-renewal of any insurance taken out by the Management and/or its agent in respect of the Project.</li>
+              <li>Notwithstanding that the Building has been insured against fire, such insurance shall only cover the structure of the building and all common areas.</li>
+              <li>The Purchaser shall take up the Purchaser's own insurance policy to cover household contents, furniture and all other fittings belonging to the Purchaser which shall not be included on the building insurance.</li>
+            </ol>
+          </div>
+
+          <div class="hr-unit"><p class="hr-rule-title">3.07 Blocking of sinks, pipes</p><p>No rags, dirt, oil, grease or other substance shall be inserted into or placed or left in the sinks, baths, lavatories, cisterns or pipes in the Parcel nor shall any obstruction or blockage be caused in the sinks, baths, lavatories, cisterns or pipes in the Parcel in any way.</p></div>
+
+          <div class="hr-unit"><p class="hr-rule-title">3.08 Decoration of exterior</p><p>The Occupant shall not decorate the exterior of the Parcel (including the placing of plants) without the prior written consent of the Management and/or its agent.</p></div>
+
+          <div class="hr-unit"><p class="hr-rule-title">3.09 Advertisements, etc.</p><p>The Occupant shall not place or allow to be placed any notices, advertisements, posters, show board, placard, name plates, illuminations or other means of visual communication upon any external parts of the Building or in any windows of the Building nor place any other articles in any of the windows or window sills (if any) which is visible from the outside of the Parcel without the prior written consent of the Management and/or its agent.</p></div>
+
+          <div class="hr-unit"><p class="hr-rule-title">3.10 External aerials and alterations</p><p>The Occupant shall not erect outside the Parcel any radio, television or other antenna or satellite dish or other obstruction nor do or permit to be done anything to the external walls of the Building which will alter the appearance of the Building.</p></div>
+
+          <div class="hr-unit"><p class="hr-rule-title">3.11 Pets</p><p>No pets shall be kept in the Parcel, on the common property or the building.</p></div>
+
+          <div class="hr-unit"><p class="hr-rule-title">3.12 Electrical apparatus and machinery</p><p>The Occupant shall not, without the prior written approval of the Management and/or its agent, erect upon or affix to the Parcel or the building or any part of them any machinery or mechanical or scientific or electrical apparatus with the exception of telephone, computers, servers and other appliances, television, radio and hi-fi sets and other domestic or office electrical appliances.</p></div>
+
+          <div class="hr-unit"><p class="hr-rule-title">3.13 Electrical points</p><p>The Occupant shall not, without the prior written approval of the Management and/or its agent, affix any extra electrical points to the Parcel.</p></div>
+
+          <div class="hr-unit"><p class="hr-rule-title">3.14 Obstruction</p><p>The Occupant shall not (1) leave or permit to be left any furniture, boxes, packages or objects of any kind; or (2) deposit or permit to be deposited any goods, refuse, litter or other thing in or upon the entrances, staircases, landings, yards, passages, lifts, fire escapes, walkways, hallway or any other part of the building.</p></div>
+
+          <div class="hr-unit"><p class="hr-rule-title">3.15 Annoyances</p><p>The Occupant shall not do or permit to be done any act or thing in the building to the annoyance or nuisance or injury of the other occupants of the building.</p></div>
+
+          <div class="hr-unit"><p class="hr-rule-title">3.16 Obstruction to access</p><p>The Occupant shall not cause any obstruction to any approaches, private roads or passage ways adjacent to or leading to the building by leaving or parking any vehicle belonging to or used by the Occupant or any of his/her friends, servants or visitors.</p></div>
+
+          <div class="hr-unit"><p class="hr-rule-title">3.17 Rubbish</p><p>The Occupant shall ensure that nothing shall be thrown or emptied by any person out of windows or doors into or onto the common property. The Occupant shall not permit any garments, rugs, mats, mops, objects to be dusted, shaken or cleaned from window, entrances, staircases, landings, yards, passages, lifts, fire escapes, hallway or any other part of the building not intended for use. The Occupant shall dispose of rubbish in proper trash containers, rubbish bins for collections at the allocated collection area. Rubbish must be secured in non-porous polythene bags before being placed in the trash container/rubbish bin. Inflammable substances such as paint and petroleum products shall not be placed in the trash container/rubbish bin.</p></div>
+
+          <div class="hr-unit"><p class="hr-rule-title">3.18 Burglar alarms</p><p>The Occupant shall not install any burglar alarms or other security systems without the prior written approval of the Management and/or its agent.</p></div>
+
+          <div class="hr-unit"><p class="hr-rule-title">3.19 Floor loading</p><p>The Occupant shall not allow, do or keep anything in the Parcel which may overload or impair the floors, walls or roof thereof.</p></div>
+
+          <div class="hr-unit"><p class="hr-rule-title">3.20 Plants</p><p>The Occupant shall ensure that plants are kept in the Parcel and shall not in any way create a nuisance to other occupants.</p></div>
+
+          <div class="hr-unit"><p class="hr-rule-title">3.21 Furniture, equipment, plants etc. in common areas</p><p>The Occupant shall not alter, shift or take away any furniture, furnishing, floor mats, landscaping features, flower plants, trees or any other items located in the common areas.</p></div>
+
+          <div class="hr-unit"><p class="hr-rule-title">3.22 Firefighting equipment, etc.</p><p>The Occupant shall not tamper, remove, destroy or damage any firefighting equipment, security system or other common facilities in the Common Property.</p></div>
+
+          <div class="hr-unit"><p class="hr-rule-title">3.23 Religious or political activities</p><p>The Occupant shall not allow any religious or political activities to take place in the Common Property or any part thereof.</p></div>
+
+          <div class="hr-unit"><p class="hr-rule-title">3.24 Letters, etc.</p><p>Letters, parcels, whether registered or otherwise and the telegrams and other items received by the Management and/or its agent are received solely at the risk of the Occupant.</p></div>
+
+          <div class="hr-unit"><p class="hr-rule-title">3.25 Interference with Common Property</p><p>The Occupant must not do anything that interferes with the air conditioning, ventilation, lighting, security systems of the Common Property.</p></div>
+
+          <div class="hr-unit"><p class="hr-rule-title">3.26 Hanging of clothes, etc.</p><p>The Occupant shall not hang or expose any clothes, towels, linen or other articles outside the Parcel or upon any part of the Building.</p></div>
+        </section>
+
+        <!-- 4.0 SPECIFIC RULES (intro / TOC anchor) -->
+        <section class="hr-section" id="hrsec-4-0">
+          <h3 class="hr-section-title">4.0 Specific Rules</h3>
+          <p>Rules specific to renovations, air conditioning installation and the condominium's shared facilities are set out in sections 4.01 to 4.07 below.</p>
+        </section>
+
+        <!-- 4.01 ALTERATIONS / RENOVATIONS -->
+        <section class="hr-section hr-section-sub" id="hrsec-4-01">
+          <h3 class="hr-section-title">4.01 Alterations / Renovations</h3>
+          <div class="hr-unit">
+            <p>The Occupant shall not:</p>
+            <ol class="hr-roman">
+              <li>Allow works to be carried out before the issuance of the Certificate of Fitness of Occupation by the appropriate authority; or</li>
+              <li>Make any additions to the Parcel including and without limitation to any awnings, shades, screens and grilles whatsoever outside the Parcel; or</li>
+              <li>Commission and fix security grills not according to the design and colour as specified by the Management and/or its agent; or</li>
+              <li>Connect the Parcel with any adjoining Parcel; or</li>
+              <li>Make internal, structural or non structural alterations to the said Parcel; or</li>
+              <li>Make connections with any pipes, electrical wiring, cables and other conduits that serve the Parcel otherwise than in accordance with plans and specifications which have been approved by the management and/or its agent and subject to written consent to make such connection having been previously obtained from the competent statutory authority; or</li>
+              <li>Make any alteration or renovation whatsoever to the Parcel</li>
+            </ol>
+            <p>unless prior written consent of the Management and/or its agent has been obtained (which consent may be granted or refused by the Management and/or its agent) and the Occupant must comply with the necessary consents from the relevant authorities.</p>
+          </div>
+          <div class="hr-unit">
+            <p>In the event consent is granted by the Management and/or its agent, the Management and/or its agent shall be entitled to impose such conditions as it deemed fit including but not limited to:</p>
+            <ol class="hr-roman">
+              <li>requesting for a renovation deposit, the amount of which shall be determined by the Management and/or its agent at its absolute discretion (hereinafter referred to as "Renovations Deposit") [the deposit will only be refunded upon satisfaction by the management and/or its agent provided always that all rules and regulations have been complied with and all debris removed after use. The cost of cleaning and all additional charges, if any, shall be deducted from the deposit and the balance shall be refunded free of interest to the Occupant in exchange of the original receipt. However, in the event that the cost of cleaning or repair to the damages exceed the amount deposited, the Occupant shall be liable to pay out the difference];</li>
+              <li>requesting for a third (3rd) party insurance liability policy to be taken out in such amount satisfactory to the management and/or its agent to cover for all third (3rd) party liability as the Management and/or its agent may deem fit during the renovation period;</li>
+              <li>requesting for a copy of all plans, drawings, and documents relating to the renovation works;</li>
+              <li>renovation works are restricted to the following hours only:
+                <ul class="hr-sub-list">
+                  <li>Mondays to Fridays: 10.00am – 5.00pm</li>
+                  <li>Saturdays: 10.00am – 1.00pm</li>
+                  <li>Sundays &amp; Public Holidays: Not allowed</li>
+                </ul>
+              </li>
+              <li>not allow the contractors to store any building materials or debris or rubbish in any common area.</li>
+            </ol>
+            <p>The Occupant shall bear the costs of any damage caused to roads, drainage, sewerage, pipes, cables, wires of the Parcel and any part of the Common Property resulting from the renovation works.</p>
+          </div>
+        </section>
+
+        <!-- 4.02 AIR CONDITIONING INSTALLATION -->
+        <section class="hr-section hr-section-sub" id="hrsec-4-02">
+          <h3 class="hr-section-title">4.02 Air Conditioning Installation</h3>
+          <div class="hr-unit">
+            <ol class="hr-roman">
+              <li>The Occupant shall not without the prior written consent of the Management and/or its agent install any air conditioning units on the exterior of the Building or protruding through the walls, doors, windows or roof thereof.</li>
+              <li>The Occupant shall place the compressor for the air conditioner at the designated compressor room and pipes connecting thereto shall be painted as the same color of the extension wall.</li>
+              <li>The Occupant shall ensure that all air conditioners are regularly serviced by qualified servicemen and that it does not drip or cause any excessive noise which could be a source of nuisance. Regular servicing should include cleaning of the filters, fan coils and other components for effective performance. Drain pipes should also be free from obstruction to avoid blockage.</li>
+              <li>The Occupant shall also ensure that the service contractors do not splash or hose water to the Occupant's compressors which may cause water to drip to parcels below.</li>
+              <li>The Occupant shall inform the Management/or its agent should a major service is required.</li>
+            </ol>
+          </div>
+        </section>
+
+        <!-- 4.03 SWIMMING POOL -->
+        <section class="hr-section hr-section-sub" id="hrsec-4-03">
+          <h3 class="hr-section-title">4.03 Swimming Pool</h3>
+          <div class="hr-unit">
+            <ol>
+              <li>There will be no lifeguard in attendance, as such all Occupants and all Guests shall swim entirely at their own risk. All swimmers are to refer to pool rules displayed by the poolside and observe the necessary precautions while using the pool.</li>
+              <li>The Occupant must ensure that the Occupant and/or his/her Guests shower before entering the pool. A person with a bandage or open wound, infectious disease will not be allowed to use the pool. Spitting, spouting, nose blowing and the likes shall not be permitted in the pools.</li>
+              <li>The Occupant must ensure that the Occupant and/or his/her Guest dry themselves before leaving the pool area. No person wearing a dripping wet bathing suit shall go beyond the pool.</li>
+              <li>Coaches shall not give lessons in the pool unless written consent has been obtained from the Management and/or its agent.</li>
+              <li>Surfboard, snorkeling and scuba diving gear (i.e. masks, snorkels, flippers, diving suits, etc), glass masks or glass goggles, boats and similar objects shall not be permitted in the pools. However, plastic goggles are permitted and children may play with small water toys in the wading pool.</li>
+              <li>Noisy, rough or dangerous play shall not be permitted in the pools.</li>
+              <li>No pets shall be allowed in the pools, their vicinity or any part of the building.</li>
+              <li>No food shall be permitted in the pools or their immediate vicinity.</li>
+              <li>The safety equipment provided around the pools shall not be used for any other purpose. No poolside furniture shall be removed from the pool area. Misuse of poolside furniture is strictly prohibited. Deck chairs and other poolside furniture may not be reserved. Persons vacating the pool area must remove all their belongings.</li>
+              <li>The filters, life buoys (if any) and other equipment in and around the pools are common properties and shall not be tampered with. The life buoys (if any) are strictly for emergency use only and MUST NOT be removed from the racks except for saving lives.</li>
+              <li>The Occupant shall strictly abide by the permitted swimming hours. The swimming pool can be used from 8.00am – 10.00pm daily.</li>
+              <li>Strictly no diving is permitted.</li>
+              <li>Only Occupants and their Guest are permitted to use the pool. Guest must sign in and must be accompanied by the resident.</li>
+              <li>Children under the age 12 must be accompanied and supervised by their parents/guardian or an adult when using the pool.</li>
+              <li>Glassware and other breakable or sharp objects are forbidden in the pool or its surrounding areas.</li>
+              <li>All swimmers must put on proper swimming attire when swimming, failing which the management and/or its agent reserved the right to request the swimmers to leave the pool.</li>
+              <li>Footwear, food and drinks are not permitted within two (2) meters from the edge of the pool.</li>
+              <li>During raining/thunderstorms, all swimmers are advised to leave the pool.</li>
+              <li>The filtration plants and pump rooms of the swimming pools are strictly out of bounds to all persons.</li>
+              <li>The following activities are not allowed on the pool deck:
+                <ul class="hr-sub-list">
+                  <li>(a) Cycling</li>
+                  <li>(b) Roller-skating</li>
+                  <li>(c) Skateboarding</li>
+                </ul>
+              </li>
+            </ol>
+            <p>The Management and/or its agent will not be held responsible for any injuries, damages or loss of life, or property sustained by the Occupants or their Guests (if any), howsoever caused when using the pool and its facilities.</p>
+          </div>
+        </section>
+
+        <!-- 4.04 GYMNASIUM -->
+        <section class="hr-section hr-section-sub" id="hrsec-4-04">
+          <h3 class="hr-section-title">4.04 Gymnasium</h3>
+          <div class="hr-unit">
+            <ol>
+              <li>The gymnasium is open from 6.00am – 10.00pm daily, unless otherwise notified.</li>
+              <li>No reservation of the gymnasium and any of its equipment is allowed. Usage of such is on a first come first serve basis.</li>
+              <li>Users of gymnasium are to be appropriately attired. Only rubber soled shoes are to be worn in the gymnasium.</li>
+              <li>No smoking, drinking or eating are allowed in the gymnasium.</li>
+              <li>Users of gymnasium are advised to bring their own towel.</li>
+              <li>All equipment must be placed to their original positions/locations after use.</li>
+              <li>Children under age of twelve (12) are not allowed to enter and use the gymnasium.</li>
+              <li>No radios, tape recorders, television sets and other electronic or mechanical sounds products or equipment shall be used in the gymnasium except with special permission from the Management.</li>
+              <li>All lights, fans, air conditioners (if any) are to be switched off by the last user on his/her way out.</li>
+              <li>The Management reserves the right to deny any access to the gymnasium to anyone in an unacceptable behavior.</li>
+            </ol>
+            <p>The Management, its agents and its employees shall not be responsible or liable in any manner whatsoever for any injury to or death of any person in the use of the gymnasium and/or the surrounding area or for any loss of and/or damage to the personal property of any person in the use of the facilities.</p>
+          </div>
+        </section>
+
+        <!-- 4.05 MULTI-PURPOSE HALL -->
+        <section class="hr-section hr-section-sub" id="hrsec-4-05">
+          <h3 class="hr-section-title">4.05 Multi-Purpose Hall</h3>
+          <div class="hr-unit">
+            <ol>
+              <li>Reservations for the use of the multi purpose hall must be made at the Management Office at least one (1) week in advance on a first-come-first-serve basis.</li>
+              <li>The multi purpose hall may be used by the residents for holding functions from 9.00am to 10.00pm, unless otherwise notified.</li>
+              <li>A deposit of RM200.00 is payable to the Management Office when making reservation. This is to ensure that the multi purpose hall is left in a clean and satisfactory condition after use. The cost of cleaning and the balance, if any, will be refunded to the resident making the reservation. In the event that the cost of cleaning and/or making good any damage exceed the deposit, the resident shall be charged the additional amount.</li>
+              <li>Notice of cancellation of function must be notified to the Management Office at least three (3) days in advance, failing which the deposit would result in the forfeiture of 50% of the charge.</li>
+              <li>Resident host must ensure their guests are confined within the hall where the function is held.</li>
+              <li>No radios, tape recorder, television sets or other electronic or mechanical sound instruments or equipment shall be used in the multi purpose hall without the approval from the Management.</li>
+              <li>No users of the multi purpose hall shall do or create anything which may be or become a nuisance or annoyance or inconvenience/any noise of whatever description likely to intervene with quiet, peaceful and lawful enjoyment of other residents.</li>
+              <li>The Management, its agents and its employees shall not be responsible or liable in any manner whatsoever for any injury to or death of any person in the use of the multi purpose hall and/or the surrounding area or for any loss of and/or damage to the personal property of any person in the use of the facilities.</li>
+            </ol>
+          </div>
+        </section>
+
+        <!-- 4.06 CHILDREN'S PLAYGROUND -->
+        <section class="hr-section hr-section-sub" id="hrsec-4-06">
+          <h3 class="hr-section-title">4.06 Children's Playground</h3>
+          <div class="hr-unit">
+            <ol>
+              <li>The children's playground can be used from 7.00am – 10.00pm daily, unless otherwise notified.</li>
+              <li>All children below twelve (12) years must be accompanied and supervised by adults who shall be responsible for their conduct and safety.
+                <ol class="hr-alpha">
+                  <li>No smoking, food or drink is permitted at the playground area.</li>
+                  <li>All litters must be deposited in refuse bins provided.</li>
+                  <li>No horseplay, throwing any items is allowed at the playground.</li>
+                  <li>All equipment placed/installed in the playground shall not be damaged or removed or altered.</li>
+                </ol>
+              </li>
+            </ol>
+            <p>No radios, tape recorders, television sets and other electronic or mechanical sounds products or equipment shall be used in the children's playground.</p>
+          </div>
+        </section>
+
+        <!-- 4.07 BBQ AREA -->
+        <section class="hr-section hr-section-sub" id="hrsec-4-07">
+          <h3 class="hr-section-title">4.07 BBQ Area</h3>
+          <div class="hr-unit">
+            <ol>
+              <li>Reservations for the use of the barbeque pit &amp; stove must be made at the Management Office at least 3 days in advance on a first come first serve basis.</li>
+              <li>A deposit of RM50.00 is payable to the Management Office when making reservation. This is to ensure that the barbeque pits and stove is left in a clean and satisfactory condition after use.</li>
+            </ol>
+          </div>
+        </section>
+
+        <!-- 5.0 BUILDING BY-LAWS -->
+        <section class="hr-section" id="hrsec-5-0">
+          <h3 class="hr-section-title">5.0 Building By-Laws</h3>
+          <div class="hr-unit">
+            <ol class="hr-roman">
+              <li>The Occupant shall not commit any breach of any planning control and shall comply with the provisions and requirements of the building by-laws and/or other laws and regulations that affect the Parcel whether as to the permitted user or otherwise and to indemnify and keep E W &amp; Associates Sdn Bhd and/or its agent indemnified against all liabilities whatsoever including costs and expenses in respect of any contravention.</li>
+              <li>The Occupant shall at his/her own expense obtain all planning permissions and to serve all such notices as may be required for the carrying out of any operations or user on the Parcel in respect of which planning permission is required under the building by-laws provided that no application for permission shall be made without the previous consent of the Management and/or its agent first had and obtained.</li>
+              <li>Subject only to any statutory direction to the contrary the Occupant shall pay and satisfy any charge or levy that may subsequently be imposed under the building by-laws in respect of the carrying out or maintenance of any such operations or management of or continuance of any such user consented to by the Management and/or its agent.</li>
+              <li>Notwithstanding any prior written consent which may be granted by the Management and/or its agent hereunder, the Occupant shall not carry out or make any alteration or addition to the Parcel or any change of use until:
+                <ul class="hr-sub-list">
+                  <li>all necessary notices under the building by-laws have been served and copies produced to the Management and/or its agent; and</li>
+                  <li>all necessary permissions under the building by-laws have been obtained and produced to the Management and/or its agent.</li>
+                </ul>
+              </li>
+            </ol>
+          </div>
+        </section>
+
+        <!-- 6.0 FIRE & EMERGENCY EVACUATION PROCEDURES -->
+        <section class="hr-section" id="hrsec-6-0">
+          <h3 class="hr-section-title">6.0 Fire &amp; Emergency Evacuation Procedures</h3>
+          <div class="hr-unit">
+            <p><strong>In the event of a fire:</strong></p>
+            <ol>
+              <li>Do not panic. Keep calm.</li>
+              <li>Hit the fire break glass with a hard object and intercom the Security Guard Post / Management office immediately for assistance to call the Jabatan Bomba dan Penyelamat and other rescue agencies at 999.</li>
+              <li>Attempt to contain or extinguish the fire by using firefighting equipment available in your unit (if any) or the common corridor but without endangering your life.</li>
+              <li>Do not use water in case of fire caused by electrical fault or failure.</li>
+              <li>If unable to do so, evacuate immediately after turning off the gas stove and turn off all electricity supply. Do not waste any time collecting any of your belongings.</li>
+              <li>Do not use the lifts. Use the staircase.</li>
+              <li>Assist children, senior citizens or handicapped people during the evacuation.</li>
+              <li>Report immediately to the Assembly point. Any missing person must be reported immediately.</li>
+            </ol>
+          </div>
+          <div class="hr-unit">
+            <p><strong>Upon hearing the fire alarm:</strong></p>
+            <ul>
+              <li>Stop all activities, turn off the gas stove and cut off all electricity supply and leave together with all the Occupants in the Parcel.</li>
+              <li>Do not waste time trying to collect your belongings.</li>
+              <li>Do not use the lifts. Use the staircase.</li>
+              <li>Assist children, senior citizens and handicapped people during the evacuation.</li>
+              <li>Report immediately to the Assembly Point. While at the Assembly Point, do not obstruct the rescue authorities who will be moving about to carry out their duties.</li>
+              <li>Do not attempt to return to collect valuables because you may be overcome by smoke.</li>
+            </ul>
+            <p class="hr-warning">REMEMBER, SMOKE KILLS BEFORE FIRE.</p>
+          </div>
+        </section>
+
+        <!-- 7.0 CAR PARKING RULES & REGULATIONS -->
+        <section class="hr-section" id="hrsec-7-0">
+          <h3 class="hr-section-title">7.0 Car Parking Rules &amp; Regulations</h3>
+          <p class="hr-warning">VEHICLES ARE PARKED AT OWNERS OWN RISK</p>
+
+          <div class="hr-unit"><p class="hr-rule-title">7.01 Parking lots</p><p>Residents shall strictly park their cars in the parking lots allocated specially to them.</p></div>
+
+          <div class="hr-unit">
+            <p class="hr-rule-title">7.02 No parking in other areas than designated parking lots</p>
+            <p>No cars shall be parked in areas designated as a no parking zone. Cars found obstructing the entrance or exit, left unattended, or park at no parking zone shall be towed away at the car owner's own expense or have his/her car clamped without any prior notice or warning, and the payment of a penalty shall be necessary before the removal of the wheel clamp.</p>
+            <p>The wheel clamp will only be released upon payment to the Management of the following charges which charges per offence may be amended from time to time:</p>
+            <table class="hr-charges-table">
+              <thead><tr><th>Offence</th><th>Charge</th></tr></thead>
+              <tbody>
+                <tr><td>(i) First time offender</td><td>RM50.00</td></tr>
+                <tr><td>(ii) Second time offender</td><td>RM100.00</td></tr>
+                <tr><td>(iii) Subsequent offender</td><td>RM200.00</td></tr>
+              </tbody>
+            </table>
+            <p>All motorcycles, bicycles and other similar forms of transport must be parked at the designated parking areas and, on no occasion should these vehicles be left or parked in any other non-designated parking area.</p>
+          </div>
+
+          <div class="hr-unit"><p class="hr-rule-title">7.03 Car wash</p><p>No car wash is allowed in the car park.</p></div>
+
+          <div class="hr-unit"><p class="hr-rule-title">7.04 Parking lot allocation</p><p>Each parcel is entitled to their designated car parking lots allocated.</p></div>
+
+          <div class="hr-unit"><p class="hr-rule-title">7.05 Repair of vehicles</p><p>No major repairs of any vehicles that involved spillage of oil or excessive noise may be made within the compound of the building.</p></div>
+
+          <div class="hr-unit"><p class="hr-rule-title">7.06 Car park access card</p><p>Each parcel will be provided with one (1) access card for each parking bay allocated for entering the car park. Any loss of access card must be reported in writing immediately to the Management Office and a fresh access card will thereafter be issued at a penalty fee of RM50.00 per card. Vehicles without access card will not be allowed to enter.</p></div>
+        </section>
+
+        <!-- 8.0 MISCELLANEOUS -->
+        <section class="hr-section" id="hrsec-8-0">
+          <h3 class="hr-section-title">8.0 Miscellaneous</h3>
+
+          <div class="hr-unit"><p class="hr-rule-title">8.01 Common areas access card (where applicable)</p><p>Each parcel will be provided with 3 common area access cards free of charge. Any additional card so required will be charged with a fee of RM20.00 per card.</p></div>
+
+          <div class="hr-unit"><p class="hr-rule-title">8.02 Quit Rent</p><p>The Management will calculate and bill the Owners of all individual parcel for the quit rent based on the built up area of their parcel on a yearly basis.</p></div>
+
+          <div class="hr-unit"><p class="hr-rule-title">8.03 Insurance / Insurance premium</p><p>The building is insured against fire and it covers the whole building including the common areas but not the personal belongings, valuables and the contents in the individual parcel. The Management will bill the owners of the parcel on a yearly basis. If the owner or the end financier on behalf of the owner takes any other insurance policy, the cost will be borne by the owner.</p></div>
+
+          <div class="hr-unit"><p class="hr-rule-title">8.04 Payment of service charge and other charges</p><p>Payment of service charge/maintenance fee can be paid to the Management office located on the ground floor of the building. Please note that interest will be charged for late payments. Residents are advised to pay promptly upon receipt of the invoices to avoid interruption in services.</p></div>
+
+          <div class="hr-unit"><p class="hr-rule-title">8.05 Responsibility of the Owner</p><p>Owner shall be responsible for ensuring that their guests/servants comply with the rules and regulations contained herein. Resident shall be liable for damage or violation committed by his tenant/resident/guests and servants.</p></div>
+
+          <div class="hr-unit"><p class="hr-rule-title">8.06 Responsibility of the Resident</p><p>Residents shall be responsible for ensuring that their guests/servant comply with the rules and regulations contained herein. Resident shall be liable for damage cause by their guests/servants.</p></div>
+
+          <div class="hr-unit"><p class="hr-rule-title">8.07 Indemnity</p><p>The residents shall indemnify and keep the Management indemnified against all actions, proceedings, claims, costs, expenses and demands in respect of injury to the person or property of the staffs, agents, licensees, invitees, of the Management, the Residents, the other Residents and/or all other person while in the Building.</p></div>
+
+          <div class="hr-unit"><p class="hr-rule-title">8.08 Disclaimer by the Management</p><p>The Management and/or its agent shall not be liable in any manner whatsoever for any loss or damage to any person, property or injury to or death of any person in the building.</p></div>
+
+          <div class="hr-unit"><p class="hr-rule-title">8.09 Amendments of rules and regulations</p><p>The Management reserves the right to amend, vary or add any rules and regulations from time to time as deemed necessary without any prior notice.</p></div>
+        </section>
+
+        <!-- ============================================================
+             ADDENDUM — pre-existing circular/AGM summary content kept
+             from the previous version of this page (not part of the
+             numbered handbook above, kept as reference material).
+             ============================================================ -->
+        <section class="hr-section" id="hrsec-9-0">
+          <h3 class="hr-section-title">Addendum: Management Circulars &amp; AGM Updates <span class="hr-addendum-badge">Management Circular</span></h3>
+          <p style="font-size:12px;color:var(--muted);">The following updates were issued by the Management Corporation at Annual General Meetings and are supplementary to (and where indicated, amend) the House Rules above.</p>
+        </section>
+
+        <section class="hr-section hr-section-sub" id="hrsec-9-01">
+          <h3 class="hr-section-title">AGM Bylaw Updates (2023–2025)</h3>
+
+          <div class="hr-unit">
+            <p class="hr-rule-title">AGM 1 — 24 Jun 2023</p>
+            <p style="font-size:13px;color:var(--muted);margin-bottom:6px;">Diluluskan sebulat suara pada Mesyuarat Agung Pertama Perbadanan Pengurusan Kondominium Delima Emas.</p>
+            <ul class="rules-list">
+              <li><strong>Penyewaan kepada Warga Asing</strong> — Warga asing samada pekerja professional atau bukan professional, <strong>tidak dibenarkan menyewa</strong> di Kondominium Delima Emas. <span class="en">(Foreign nationals — whether professional workers or otherwise — are not permitted to rent units here.)</span></li>
+              <li><strong>Had Penghuni</strong> — Unit yang disewa hendaklah tidak melebihi <strong>6 orang</strong> sahaja. <span class="en">(Maximum 6 occupants per unit.)</span></li>
+            </ul>
+          </div>
+
+          <div class="hr-unit">
+            <p class="hr-rule-title">AGM 2 — 20 Julai 2024</p>
+            <p style="font-size:13px;color:var(--muted);margin-bottom:6px;">Diluluskan pada Mesyuarat Agung Ke Dua Perbadanan Pengurusan Kondominium Delima Emas.</p>
+            <ul class="rules-list">
+              <li><strong>Gymnasium</strong> — Denda <strong>RM100 atau 3 bulan tidak dibenarkan menggunakan bilik gym</strong> bagi pengguna yang tidak mematuhi peraturan gym (tertera di pintu masuk), vandalism dan sebagainya. <span class="en">(Fine RM100 or 3-month gym ban for violating gym rules, vandalism, etc.)</span></li>
+              <li><strong>Parking Lot</strong> — Denda <strong>RM50</strong> sekiranya kenderaan anda dikunci kerana meletak kenderaan di lot parking kepunyaan unit lain. <span class="en">(RM50 fine for parking in another unit's allocated lot.)</span></li>
+              <li><strong>Parking Lot (Motosikal/Kereta)</strong> — Denda <strong>RM50</strong> sekiranya kenderaan anda dikunci kerana meletakkan motosikal/kereta di tempat yang bukan di kawasan yang telah ditetapkan dan disediakan oleh pihak Pengurusan. <span class="en">(RM50 fine for parking motorcycle/car outside designated areas.)</span></li>
+              <li><strong>Parking Visitor (Bermalam)</strong> — Kemudahan tempat kereta bagi pelawat bermalam hanya dibenarkan selama <strong>3 hari sahaja</strong>. Bagi hari seterusnya akan dikenakan bayaran <strong>RM10 semalam</strong>. <span class="en">(Overnight visitor parking limited to 3 nights; RM10/night thereafter.)</span></li>
+              <li><strong>Bilik Sampah</strong> — Denda <strong>RM100</strong> bagi unit yang membuang sampah sesuka hati tanpa mematuhi notis yang ditampal pada bilik sampah. <span class="en">(RM100 fine for improper waste disposal ignoring posted notices.)</span></li>
+              <li><strong>Lift</strong> — Denda <strong>RM100</strong> bagi unit yang memberhentikan lift secara manual tanpa menggunakan kad akses, melakukan vandalism dengan sengaja. Sekiranya berlaku kerosakan lift, pengguna yang terlibat akan menanggung kos kerosakan tersebut. <span class="en">(RM100 fine for manually stopping lift without access card or vandalism; user bears repair costs if lift is damaged.)</span></li>
+            </ul>
+          </div>
+
+          <div class="hr-unit">
+            <p class="hr-rule-title">AGM — 27 September 2025</p>
+            <p style="font-size:13px;color:var(--muted);margin-bottom:6px;">Diluluskan sebulat suara pada Mesyuarat Agung MC 27 September 2025.</p>
+            <ul class="rules-list">
+              <li><strong>Invisible Grille di Balkoni</strong> — Dibenarkan, dengan spesifikasi: stainless steel cable Teflon-coated 2.0mm (SS316), jarak antara kabel 2.0 inci, dipasang penuh, lurus, di luar railing. <span class="en">(Balcony invisible grilles permitted — SS316 Teflon-coated cable 2.0mm, 2.0-inch gap, fully installed outside railing.)</span></li>
+              <li><strong>Bidai Kayu (Bamboo Roller Blinds)</strong> — Dibenarkan, jenis kayu berwarna coklat gelap sahaja. <span class="en">(Bamboo roller blinds permitted — dark brown wood colour only.)</span></li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="hr-section hr-section-sub" id="hrsec-9-02">
+          <h3 class="hr-section-title">Rubbish Disposal Guidelines</h3>
+          <div class="hr-unit">
+            <p class="hr-rule-title">Etika Pembuangan Sampah: Tanggungjawab Kita Bersama</p>
+            <p style="font-size:14px;font-weight:600;color:#2e7d32;margin-top:6px;">✅ Dibenarkan / Allowed</p>
+            <ul class="rules-list">
+              <li>Sisa basah / bekas pembungkus makanan — pastikan sampah diikat dengan kemas sebelum dibuang ke dalam tong sampah. <span class="en">(Wet waste / food packaging — must be tied securely before disposal in the bin.)</span></li>
+            </ul>
+            <p style="font-size:14px;font-weight:600;color:#c62828;margin-top:12px;">❌ Tidak Dibenarkan / Not Allowed</p>
+            <ul class="rules-list">
+              <li>(1) Kotak <span class="en">(boxes)</span></li>
+              <li>(2) Botol kaca / plastik <span class="en">(glass / plastic bottles)</span></li>
+              <li>(3) Tilam @ bantal <span class="en">(mattresses / pillows)</span></li>
+              <li>(4) Sisa e-waste <span class="en">(e-waste)</span></li>
+              <li>(5) Barang terpakai <span class="en">(used items)</span></li>
+              <li>(6) Perabot lama &amp; rosak <span class="en">(old / broken furniture)</span></li>
+            </ul>
+          </div>
+          <div class="hr-unit">
+            <p class="hr-rule-title">Kawasan Tempat Pembuangan</p>
+            <ul class="rules-list">
+              <li>Kawasan pembuangan di bangunan parking kereta (ground floor) adalah <strong>untuk item (1) dan (2) sahaja</strong> — kotak dan botol kaca/plastik, diletakkan di kawasan kitar semula yang disediakan.</li>
+              <li><strong>Item (3), (4), (5) dan (6) WAJIB dilupuskan sendiri di luar kawasan kondominium.</strong></li>
+            </ul>
+            <p style="font-size:14px;font-weight:700;color:#c62828;margin-top:10px;">⚠️ Kegagalan mematuhi peraturan akan didenda minimum RM100.00 dan maksimum RM300.00.</p>
+          </div>
+        </section>
+
+        <section class="hr-section hr-section-sub" id="hrsec-9-03">
+          <h3 class="hr-section-title">Tenancy Rules <span class="en">Peraturan Penyewaan</span></h3>
+          <div class="hr-unit">
+            <div class="hr-notice">
+              ⚠️ Pindaan AGM 24 Jun 2023: Warga asing samada pekerja professional atau bukan professional, <strong>tidak dibenarkan menyewa</strong> di Kondominium Delima Emas. <span style="font-weight:400;color:var(--muted);">(As of AGM Jun 2023, foreign nationals — professional or otherwise — are no longer permitted to rent units here.)</span>
+            </div>
+          </div>
+          <div class="hr-unit">
+            <p class="hr-rule-title">Had Penghuni / Occupancy Limit</p>
+            <ul class="rules-list">
+              <li>Unit yang disewa hendaklah tidak melebihi <strong>6 orang</strong> sahaja. <span class="en">(Maximum 6 occupants per rented unit.)</span></li>
+            </ul>
+          </div>
+          <div class="hr-unit">
+            <p class="hr-rule-title">Pematuhan Undang-Undang Kecil Tambahan (AGM Sep 2025)</p>
+            <p style="font-size:13px;color:var(--muted);margin-bottom:6px;">Berkuat kuasa serta merta dan wajib dipatuhi oleh semua pemilik unit.</p>
+            <ul class="rules-list">
+              <li><strong>1) Pendaftaran penyewa</strong> — Pemilik wajib mendaftarkan penyewa warga asing profesional dengan Pejabat Pengurusan sebelum penyewa menduduki unit.</li>
+              <li><strong>2) Dokumen sokongan</strong> — Salinan pasport &amp; visa yang sah, serta salinan kontrak perjanjian penyewaan, perlu dikemukakan kepada pengurusan.</li>
+              <li><strong>3) Tanggungjawab pemilik</strong> — Memastikan penyewa berkelakuan baik dan tidak menimbulkan gangguan di kondominium.</li>
+              <li><strong>4) Had maksimum penyewa</strong> — 6 orang bagi setiap unit.</li>
+              <li><strong>5) Tindakan penguatkuasaan</strong> — Pengurusan boleh mengenakan denda dan/atau melaporkan kepada pemilik atau agensi kerja sekiranya berlaku pelanggaran.</li>
+              <li><strong>6) Pengusiran penyewa</strong> — Penyewa yang gagal mematuhi Undang-Undang Kecil atau House Rules boleh diarahkan keluar oleh MC, selaras dengan Strata Management Act 2013.</li>
+            </ul>
+          </div>
+        </section>
+
+      </div><!-- /.hr-doc -->
+
+      <p style="font-size:11px;color:var(--muted);margin-top:18px;">This page reproduces the full Residents' House Rules &amp; Regulations handbook (House Rules - Revision 1) together with recent management circulars (AGM Jun 2023, Jul 2024, Sep 2025). The Management reserves the right to amend these rules from time to time — for the current official copy, please refer to the documents held at the Management Office.</p>
     </div>
   </div>
 
@@ -1531,15 +1886,137 @@ document.querySelectorAll('.sub-tab-btn[data-managelist]').forEach(btn => {
   });
 });
 
-/* House Rules sub-tabs */
-document.querySelectorAll('.sub-tab-btn[data-hr]').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.sub-tab-btn[data-hr]').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.hr-sub').forEach(s => s.style.display = 'none');
-    btn.classList.add('active');
-    document.getElementById(btn.dataset.hr).style.display = 'block';
+/* ================================================================
+   HOUSE RULES — SEARCH + TABLE OF CONTENTS (added)
+   Everything below is self-contained vanilla JS: it searches the
+   full House Rules text rendered in #hrDoc, works entirely in the
+   browser (no server/database), and drives the smooth-scrolling
+   Table of Contents. Safe to edit independently of the rest of the
+   app's JS — it only touches elements inside #houserules.
+   ================================================================ */
+(function houseRulesModule() {
+  const searchInput = document.getElementById('hrSearchInput');
+  const searchBtn = document.getElementById('hrSearchBtn');
+  const clearBtn = document.getElementById('hrClearBtn');
+  const infoEl = document.getElementById('hrSearchInfo');
+  const noResultsEl = document.getElementById('hrNoResults');
+  const tocEl = document.getElementById('hrToc');
+  if (!searchInput) return; // House Rules markup not present on this page
+
+  /* Remove any <mark class="hr-mark"> highlighting inside a node, restoring plain text. */
+  function clearHighlights(root) {
+    root.querySelectorAll('mark.hr-mark').forEach(mark => {
+      const parent = mark.parentNode;
+      if (!parent) return;
+      parent.replaceChild(document.createTextNode(mark.textContent), mark);
+      parent.normalize();
+    });
+  }
+
+  /* Wrap every case-insensitive match of `query` inside a single text node in <mark>. */
+  function highlightTextNode(node, query) {
+    const text = node.nodeValue;
+    const lower = text.toLowerCase();
+    let idx = lower.indexOf(query);
+    if (idx === -1) return false;
+
+    const frag = document.createDocumentFragment();
+    let lastIndex = 0;
+    while (idx !== -1) {
+      frag.appendChild(document.createTextNode(text.slice(lastIndex, idx)));
+      const mark = document.createElement('mark');
+      mark.className = 'hr-mark';
+      mark.textContent = text.slice(idx, idx + query.length);
+      frag.appendChild(mark);
+      lastIndex = idx + query.length;
+      idx = lower.indexOf(query, lastIndex);
+    }
+    frag.appendChild(document.createTextNode(text.slice(lastIndex)));
+    node.parentNode.replaceChild(frag, node);
+    return true;
+  }
+
+  /* Highlight every match of `query` inside `unit`, walking its text nodes only
+     (so existing tags like <strong>/<li> are left untouched). */
+  function highlightInUnit(unit, query) {
+    const walker = document.createTreeWalker(unit, NodeFilter.SHOW_TEXT, null);
+    const nodes = [];
+    let n;
+    while ((n = walker.nextNode())) nodes.push(n);
+    nodes.forEach(node => highlightTextNode(node, query));
+  }
+
+  function resetHRSearch() {
+    const units = document.querySelectorAll('#hrDoc .hr-unit');
+    units.forEach(u => { clearHighlights(u); u.style.display = ''; });
+    document.querySelectorAll('#hrDoc .hr-section').forEach(sec => { sec.style.display = ''; });
+    infoEl.textContent = '';
+    noResultsEl.style.display = 'none';
+  }
+
+  function performHRSearch() {
+    const query = searchInput.value.trim().toLowerCase();
+
+    if (!query) {
+      resetHRSearch();
+      return;
+    }
+
+    const units = document.querySelectorAll('#hrDoc .hr-unit');
+    let matchCount = 0;
+
+    units.forEach(unit => {
+      clearHighlights(unit);
+      const matches = unit.textContent.toLowerCase().includes(query);
+      unit.style.display = matches ? '' : 'none';
+      if (matches) {
+        highlightInUnit(unit, query);
+        matchCount++;
+      }
+    });
+
+    // Hide a whole section (and its heading) if none of its rules matched;
+    // sections with no .hr-unit at all (e.g. short intro headings) stay visible.
+    document.querySelectorAll('#hrDoc .hr-section').forEach(sec => {
+      const unitsInSection = sec.querySelectorAll('.hr-unit');
+      if (unitsInSection.length === 0) return;
+      const anyVisible = Array.from(unitsInSection).some(u => u.style.display !== 'none');
+      sec.style.display = anyVisible ? '' : 'none';
+    });
+
+    infoEl.innerHTML = matchCount > 0
+      ? '<strong>' + matchCount + '</strong> matching result' + (matchCount === 1 ? '' : 's') + ' found for "' + searchInput.value.trim() + '"'
+      : '';
+    noResultsEl.style.display = matchCount === 0 ? 'block' : 'none';
+  }
+
+  function clearHRSearch() {
+    searchInput.value = '';
+    resetHRSearch();
+    searchInput.focus();
+  }
+
+  searchInput.addEventListener('input', performHRSearch);
+  searchInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') { e.preventDefault(); performHRSearch(); }
   });
-});
+  searchBtn.addEventListener('click', performHRSearch);
+  clearBtn.addEventListener('click', clearHRSearch);
+
+  /* Table of Contents — smooth-scroll to the target section. */
+  if (tocEl) {
+    tocEl.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        if (!target) return;
+        // Clear any active search filter so the target section is visible.
+        if (searchInput.value.trim()) clearHRSearch();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  }
+})();
 
 /* ---------- Render public pages (free-text content) ---------- */
 async function renderPages() {
